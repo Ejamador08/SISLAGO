@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBColegio1_0Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblAula">
+    <Key>
+      <PropertyRef Name="IDAula" />
+    </Key>
+    <Property Name="IDAula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CantAlumnos" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblAulaDocente" Relationship="Self.FK_tblAulaDocente_tblAula" FromRole="tblAula" ToRole="tblAulaDocente" />
+    <NavigationProperty Name="tblEstudiantes" Relationship="Self.FK_tblEstudiantes_tblAula" FromRole="tblAula" ToRole="tblEstudiantes" />
+  </EntityType>
+  <EntityType Name="tblAulaDocente">
+    <Key>
+      <PropertyRef Name="IDAulaDocente" />
+    </Key>
+    <Property Name="IDAulaDocente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDAula" Type="Int32" Nullable="false" />
+    <Property Name="IDDocente" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblAula" Relationship="Self.FK_tblAulaDocente_tblAula" FromRole="tblAulaDocente" ToRole="tblAula" />
+    <NavigationProperty Name="tblDocente" Relationship="Self.FK_tblAulaDocente_tblDocente" FromRole="tblAulaDocente" ToRole="tblDocente" />
+  </EntityType>
+  <EntityType Name="tblDocente">
+    <Key>
+      <PropertyRef Name="IDDocente" />
+    </Key>
+    <Property Name="IDDocente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Direccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Profesion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IDMateria" Type="Int32" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblAulaDocente" Relationship="Self.FK_tblAulaDocente_tblDocente" FromRole="tblDocente" ToRole="tblAulaDocente" />
+    <NavigationProperty Name="tblMateria" Relationship="Self.FK_tblDocente_tblMateria" FromRole="tblDocente" ToRole="tblMateria" />
+    <NavigationProperty Name="tblNotas" Relationship="Self.FK_tblNotas_tblDocente" FromRole="tblDocente" ToRole="tblNotas" />
+    <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblUsuario_tblDocente" FromRole="tblDocente" ToRole="tblUsuario" />
+  </EntityType>
+  <EntityType Name="tblEstudiantes">
+    <Key>
+      <PropertyRef Name="IDEstudiante" />
+    </Key>
+    <Property Name="IDEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Direccion" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Tutor" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AñoCurso" Type="Int32" Nullable="false" />
+    <Property Name="IDAula" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblAula" Relationship="Self.FK_tblEstudiantes_tblAula" FromRole="tblEstudiantes" ToRole="tblAula" />
+    <NavigationProperty Name="tblMateriaEstudiante" Relationship="Self.FK_tblMateriaEstudiante_tblEstudiantes" FromRole="tblEstudiantes" ToRole="tblMateriaEstudiante" />
+    <NavigationProperty Name="tblNotas" Relationship="Self.FK_tblNotas_tblEstudiantes" FromRole="tblEstudiantes" ToRole="tblNotas" />
+    <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblUsuario_tblEstudiantes" FromRole="tblEstudiantes" ToRole="tblUsuario" />
+  </EntityType>
+  <EntityType Name="tblMateria">
+    <Key>
+      <PropertyRef Name="IDMateria" />
+    </Key>
+    <Property Name="IDMateria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CantUnidades" Type="Int32" Nullable="false" />
+    <Property Name="CantHoras" Type="Int32" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblDocente" Relationship="Self.FK_tblDocente_tblMateria" FromRole="tblMateria" ToRole="tblDocente" />
+    <NavigationProperty Name="tblMateriaEstudiante" Relationship="Self.FK_tblMateriaEstudiante_tblMateria" FromRole="tblMateria" ToRole="tblMateriaEstudiante" />
+    <NavigationProperty Name="tblNotas" Relationship="Self.FK_tblNotas_tblMateria" FromRole="tblMateria" ToRole="tblNotas" />
+  </EntityType>
+  <EntityType Name="tblMateriaEstudiante">
+    <Key>
+      <PropertyRef Name="IDMateriaEstudiante" />
+    </Key>
+    <Property Name="IDMateriaEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDMateria" Type="Int32" Nullable="false" />
+    <Property Name="IDEstudiante" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblEstudiantes" Relationship="Self.FK_tblMateriaEstudiante_tblEstudiantes" FromRole="tblMateriaEstudiante" ToRole="tblEstudiantes" />
+    <NavigationProperty Name="tblMateria" Relationship="Self.FK_tblMateriaEstudiante_tblMateria" FromRole="tblMateriaEstudiante" ToRole="tblMateria" />
+  </EntityType>
+  <EntityType Name="tblNotas">
+    <Key>
+      <PropertyRef Name="IDNotas" />
+    </Key>
+    <Property Name="IDNotas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDMateria" Type="Int32" Nullable="false" />
+    <Property Name="IDEstudiante" Type="Int32" Nullable="false" />
+    <Property Name="IDDocente" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblDocente" Relationship="Self.FK_tblNotas_tblDocente" FromRole="tblNotas" ToRole="tblDocente" />
+    <NavigationProperty Name="tblEstudiantes" Relationship="Self.FK_tblNotas_tblEstudiantes" FromRole="tblNotas" ToRole="tblEstudiantes" />
+    <NavigationProperty Name="tblMateria" Relationship="Self.FK_tblNotas_tblMateria" FromRole="tblNotas" ToRole="tblMateria" />
+  </EntityType>
+  <EntityType Name="tblUsuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDDocente" Type="Int32" />
+    <Property Name="IDEstudiante" Type="Int32" />
+    <Property Name="Rol" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblDocente" Relationship="Self.FK_tblUsuario_tblDocente" FromRole="tblUsuario" ToRole="tblDocente" />
+    <NavigationProperty Name="tblEstudiantes" Relationship="Self.FK_tblUsuario_tblEstudiantes" FromRole="tblUsuario" ToRole="tblEstudiantes" />
+  </EntityType>
+  <Association Name="FK_tblAulaDocente_tblAula">
+    <End Role="tblAula" Type="Self.tblAula" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblAulaDocente" Type="Self.tblAulaDocente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAula">
+        <PropertyRef Name="IDAula" />
+      </Principal>
+      <Dependent Role="tblAulaDocente">
+        <PropertyRef Name="IDAula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblEstudiantes_tblAula">
+    <End Role="tblAula" Type="Self.tblAula" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblEstudiantes" Type="Self.tblEstudiantes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAula">
+        <PropertyRef Name="IDAula" />
+      </Principal>
+      <Dependent Role="tblEstudiantes">
+        <PropertyRef Name="IDAula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblAulaDocente_tblDocente">
+    <End Role="tblDocente" Type="Self.tblDocente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblAulaDocente" Type="Self.tblAulaDocente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDocente">
+        <PropertyRef Name="IDDocente" />
+      </Principal>
+      <Dependent Role="tblAulaDocente">
+        <PropertyRef Name="IDDocente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDocente_tblMateria">
+    <End Role="tblMateria" Type="Self.tblMateria" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblDocente" Type="Self.tblDocente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateria">
+        <PropertyRef Name="IDMateria" />
+      </Principal>
+      <Dependent Role="tblDocente">
+        <PropertyRef Name="IDMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotas_tblDocente">
+    <End Role="tblDocente" Type="Self.tblDocente" Multiplicity="1" />
+    <End Role="tblNotas" Type="Self.tblNotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDocente">
+        <PropertyRef Name="IDDocente" />
+      </Principal>
+      <Dependent Role="tblNotas">
+        <PropertyRef Name="IDDocente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsuario_tblDocente">
+    <End Role="tblDocente" Type="Self.tblDocente" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDocente">
+        <PropertyRef Name="IDDocente" />
+      </Principal>
+      <Dependent Role="tblUsuario">
+        <PropertyRef Name="IDDocente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMateriaEstudiante_tblEstudiantes">
+    <End Role="tblEstudiantes" Type="Self.tblEstudiantes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMateriaEstudiante" Type="Self.tblMateriaEstudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEstudiantes">
+        <PropertyRef Name="IDEstudiante" />
+      </Principal>
+      <Dependent Role="tblMateriaEstudiante">
+        <PropertyRef Name="IDEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotas_tblEstudiantes">
+    <End Role="tblEstudiantes" Type="Self.tblEstudiantes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblNotas" Type="Self.tblNotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEstudiantes">
+        <PropertyRef Name="IDEstudiante" />
+      </Principal>
+      <Dependent Role="tblNotas">
+        <PropertyRef Name="IDEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsuario_tblEstudiantes">
+    <End Role="tblEstudiantes" Type="Self.tblEstudiantes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEstudiantes">
+        <PropertyRef Name="IDEstudiante" />
+      </Principal>
+      <Dependent Role="tblUsuario">
+        <PropertyRef Name="IDEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMateriaEstudiante_tblMateria">
+    <End Role="tblMateria" Type="Self.tblMateria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMateriaEstudiante" Type="Self.tblMateriaEstudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateria">
+        <PropertyRef Name="IDMateria" />
+      </Principal>
+      <Dependent Role="tblMateriaEstudiante">
+        <PropertyRef Name="IDMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblNotas_tblMateria">
+    <End Role="tblMateria" Type="Self.tblMateria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblNotas" Type="Self.tblNotas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateria">
+        <PropertyRef Name="IDMateria" />
+      </Principal>
+      <Dependent Role="tblNotas">
+        <PropertyRef Name="IDMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBColegio1_0Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblAula" EntityType="Self.tblAula" />
+    <EntitySet Name="tblAulaDocente" EntityType="Self.tblAulaDocente" />
+    <EntitySet Name="tblDocente" EntityType="Self.tblDocente" />
+    <EntitySet Name="tblEstudiantes" EntityType="Self.tblEstudiantes" />
+    <EntitySet Name="tblMateria" EntityType="Self.tblMateria" />
+    <EntitySet Name="tblMateriaEstudiante" EntityType="Self.tblMateriaEstudiante" />
+    <EntitySet Name="tblNotas" EntityType="Self.tblNotas" />
+    <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
+    <AssociationSet Name="FK_tblAulaDocente_tblAula" Association="Self.FK_tblAulaDocente_tblAula">
+      <End Role="tblAula" EntitySet="tblAula" />
+      <End Role="tblAulaDocente" EntitySet="tblAulaDocente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblEstudiantes_tblAula" Association="Self.FK_tblEstudiantes_tblAula">
+      <End Role="tblAula" EntitySet="tblAula" />
+      <End Role="tblEstudiantes" EntitySet="tblEstudiantes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblAulaDocente_tblDocente" Association="Self.FK_tblAulaDocente_tblDocente">
+      <End Role="tblDocente" EntitySet="tblDocente" />
+      <End Role="tblAulaDocente" EntitySet="tblAulaDocente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDocente_tblMateria" Association="Self.FK_tblDocente_tblMateria">
+      <End Role="tblMateria" EntitySet="tblMateria" />
+      <End Role="tblDocente" EntitySet="tblDocente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotas_tblDocente" Association="Self.FK_tblNotas_tblDocente">
+      <End Role="tblDocente" EntitySet="tblDocente" />
+      <End Role="tblNotas" EntitySet="tblNotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsuario_tblDocente" Association="Self.FK_tblUsuario_tblDocente">
+      <End Role="tblDocente" EntitySet="tblDocente" />
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMateriaEstudiante_tblEstudiantes" Association="Self.FK_tblMateriaEstudiante_tblEstudiantes">
+      <End Role="tblEstudiantes" EntitySet="tblEstudiantes" />
+      <End Role="tblMateriaEstudiante" EntitySet="tblMateriaEstudiante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotas_tblEstudiantes" Association="Self.FK_tblNotas_tblEstudiantes">
+      <End Role="tblEstudiantes" EntitySet="tblEstudiantes" />
+      <End Role="tblNotas" EntitySet="tblNotas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsuario_tblEstudiantes" Association="Self.FK_tblUsuario_tblEstudiantes">
+      <End Role="tblEstudiantes" EntitySet="tblEstudiantes" />
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMateriaEstudiante_tblMateria" Association="Self.FK_tblMateriaEstudiante_tblMateria">
+      <End Role="tblMateria" EntitySet="tblMateria" />
+      <End Role="tblMateriaEstudiante" EntitySet="tblMateriaEstudiante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblNotas_tblMateria" Association="Self.FK_tblNotas_tblMateria">
+      <End Role="tblMateria" EntitySet="tblMateria" />
+      <End Role="tblNotas" EntitySet="tblNotas" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBColegio1_0Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBColegio1_0Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="SPActualizaEstudiante">
+      <Parameter Name="identificador" Mode="In" Type="Int32" />
+      <Parameter Name="pnombre" Mode="In" Type="String" />
+      <Parameter Name="snombre" Mode="In" Type="String" />
+      <Parameter Name="papellido" Mode="In" Type="String" />
+      <Parameter Name="sapellido" Mode="In" Type="String" />
+      <Parameter Name="fnac" Mode="In" Type="DateTime" />
+      <Parameter Name="dir" Mode="In" Type="String" />
+      <Parameter Name="tel" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+      <Parameter Name="tutor" Mode="In" Type="String" />
+      <Parameter Name="acurso" Mode="In" Type="Int32" />
+      <Parameter Name="idaula" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPActualizarDocente">
+      <Parameter Name="IdDocente" Mode="In" Type="Int32" />
+      <Parameter Name="pnombre" Mode="In" Type="String" />
+      <Parameter Name="snombre" Mode="In" Type="String" />
+      <Parameter Name="papellido" Mode="In" Type="String" />
+      <Parameter Name="sapellido" Mode="In" Type="String" />
+      <Parameter Name="Fnacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="Int32" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="genero" Mode="In" Type="String" />
+      <Parameter Name="profecion" Mode="In" Type="String" />
+      <Parameter Name="idmateria" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPELiminaEstudiante">
+      <Parameter Name="identificador" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPEliminarDocente">
+      <Parameter Name="IdDocentes" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPEstudianteMateriaDocente" ReturnType="Collection(DBColegio1_0Model.SPEstudianteMateriaDocente_Result)" />
+    <FunctionImport Name="SPInfoALLRegistros" ReturnType="Collection(DBColegio1_0Model.SPInfoALLRegistros_Result)" />
+    <FunctionImport Name="SPInfoEstudiantes" ReturnType="Collection(DBColegio1_0Model.SPInfoEstudiantes_Result)" />
+    <FunctionImport Name="SPInfoRegistroPorID" ReturnType="Collection(DBColegio1_0Model.SPInfoRegistroPorID_Result)">
+      <Parameter Name="IdDocente" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SPIngresarDocente">
+      <Parameter Name="pnombre" Mode="In" Type="String" />
+      <Parameter Name="snombre" Mode="In" Type="String" />
+      <Parameter Name="papellido" Mode="In" Type="String" />
+      <Parameter Name="sapellido" Mode="In" Type="String" />
+      <Parameter Name="Fnacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="direccion" Mode="In" Type="String" />
+      <Parameter Name="telefono" Mode="In" Type="Int32" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="genero" Mode="In" Type="String" />
+      <Parameter Name="profecion" Mode="In" Type="String" />
+      <Parameter Name="idmateria" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraAulasActivas" ReturnType="Collection(DBColegio1_0Model.SPMuestraAulasActivas_Result)">
+      <Parameter Name="activas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraAulasInactivas" ReturnType="Collection(DBColegio1_0Model.SPMuestraAulasInactivas_Result)">
+      <Parameter Name="inactivas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraEstudianteX" ReturnType="Collection(DBColegio1_0Model.SPMuestraEstudianteX_Result)">
+      <Parameter Name="pnombre" Mode="In" Type="String" />
+      <Parameter Name="snombre" Mode="In" Type="String" />
+      <Parameter Name="papellido" Mode="In" Type="String" />
+      <Parameter Name="sapellido" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraMateriasActivas" ReturnType="Collection(DBColegio1_0Model.SPMuestraMateriasActivas_Result)">
+      <Parameter Name="MateriasActivas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraMateriasInactivas" ReturnType="Collection(DBColegio1_0Model.SPMuestraMateriasInactivas_Result)">
+      <Parameter Name="MateriasInactivas" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPMuestraUsuario" ReturnType="Collection(DBColegio1_0Model.SPMuestraUsuario_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SPNuevoEstudiante">
+      <Parameter Name="pnombre" Mode="In" Type="String" />
+      <Parameter Name="snombre" Mode="In" Type="String" />
+      <Parameter Name="papellido" Mode="In" Type="String" />
+      <Parameter Name="sapellido" Mode="In" Type="String" />
+      <Parameter Name="fnac" Mode="In" Type="DateTime" />
+      <Parameter Name="dir" Mode="In" Type="String" />
+      <Parameter Name="tel" Mode="In" Type="String" />
+      <Parameter Name="mail" Mode="In" Type="String" />
+      <Parameter Name="gen" Mode="In" Type="String" />
+      <Parameter Name="tutor" Mode="In" Type="String" />
+      <Parameter Name="acurso" Mode="In" Type="Int32" />
+      <Parameter Name="idaula" Mode="In" Type="Int32" />
+      <Parameter Name="estado" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SPEstudianteMateriaDocente_Result">
+    <Property Type="String" Name="NombreEst" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="ApellidoEst" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="MAteria" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NombreDoc" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ApelldioDoc" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="SPInfoALLRegistros_Result">
+    <Property Type="Int32" Name="IDDocente" Nullable="false" />
+    <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Genero" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="IDMateria" Nullable="true" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPInfoEstudiantes_Result">
+    <Property Type="Int32" Name="IDEstudiante" Nullable="false" />
+    <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Genero" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Tutor" Nullable="false" MaxLength="80" />
+    <Property Type="Int32" Name="AñoCurso" Nullable="false" />
+    <Property Type="Int32" Name="IDAula" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPInfoRegistroPorID_Result">
+    <Property Type="Int32" Name="IDDocente" Nullable="false" />
+    <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="30" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="80" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Genero" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Profesion" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="IDMateria" Nullable="true" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraAulasActivas_Result">
+    <Property Type="Int32" Name="IDAula" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantAlumnos" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraAulasInactivas_Result">
+    <Property Type="Int32" Name="IDAula" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantAlumnos" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraEstudianteX_Result">
+    <Property Type="Int32" Name="IDEstudiante" Nullable="false" />
+    <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="25" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="Direccion" Nullable="false" MaxLength="70" />
+    <Property Type="String" Name="Telefono" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="Genero" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Tutor" Nullable="false" MaxLength="80" />
+    <Property Type="Int32" Name="AñoCurso" Nullable="false" />
+    <Property Type="Int32" Name="IDAula" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraMateriasActivas_Result">
+    <Property Type="Int32" Name="IDMateria" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantUnidades" Nullable="false" />
+    <Property Type="Int32" Name="CantHoras" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraMateriasInactivas_Result">
+    <Property Type="Int32" Name="IDMateria" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CantUnidades" Nullable="false" />
+    <Property Type="Int32" Name="CantHoras" Nullable="false" />
+    <Property Type="String" Name="Imagen" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SPMuestraUsuario_Result">
+    <Property Type="String" Name="Username" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="25" />
+    <Property Type="String" Name="Rol" Nullable="false" MaxLength="25" />
+  </ComplexType>
+</Schema>

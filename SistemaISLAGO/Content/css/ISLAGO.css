@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', 'sans-serif';
+    background: #efefef;
+}
+
+
+.menu_superior-todo {
+    text-align: center;
+    margin: 0;
+}
+
+.menu_superior {
+    list-style: none;
+    padding: 0;
+    background: #000063;
+    width: 100%;
+    margin: auto;
+}
+
+.menu_superior li a {
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    display: block;
+}
+.menu_superior li
+{
+    display: inline-block;
+}
+
+.menu_superior li a:hover{
+    background: #311b92;
+}
+
+.btnLogOut {
+    background: #a50202;
+   
+}
+
+.img-aling{
+    margin-right: 10px;
+}
+
+.img-aling-R{
+    margin-right: 30px;
+}
+
+.img-aling-P{
+    margin-right: 20px;
+}
+
+.btnLogOut:hover {
+    background: red;
+}
+
+.bar_login {
+    width: 250px;
+    height: 112px;
+    float: left;
+    padding: 15px;
+    background: #000070;
+    border-style: solid;
+    margin-top: -17px;
+    border: 1px solid black;
+}
+
+.bar_login img{
+    margin-top: -10px;
+    float: left;
+}
+h5,h6{
+    margin-top: 10px;
+    color: white;
+}
+
+@font-face {
+    font-family: 'eras-bold-itc';
+    font-style: normal;
+    font-weight: 400;
+    src:url("../fonts/ErasBoldITC.ttf");
+  }
+
+h6{
+    font-family: eras-bold-itc;
+    font-size: 14px;
+}
+
+
+.menu_lateral {
+    width: 250px;
+    height: 805px;
+    background: #000063;
+}
+
+.menu_lateral li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 30px;
+    display: block;
+}
+
+.menu_lateral a:hover {
+    background-color: #311b92;
+}
+
+.container{
+    width: 60%;
+    height: 400px;
+    margin-left: 23%;
+    margin-top: -35%;
+}
+.container p{
+    padding: 200px;
+    text-align: center;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container_principal {
+    width: 100%;
+    height: 20px;
+    background: #311b92;
+}
+
+footer{
+    width: 100%;
+    background: #311b92;
+    height: 111px;
+    margin-top: 212px;
+}
+
+footer h4 {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Cinzel', serif;
+    padding: 25px;
+}
+
+
+@font-face {
+    font-family: 'Cinzel', serif;
+    src: url('../fonts/Cinzel-regular.ttf')format('truetype');
+}
+
+/*web responsive desing*/
+@media only screen and (max-width: 1000px) {
+    body{
+        width: 50%;
+        height: 50%;
+    }
+    .menu_lateral {
+        width: 90%;
+        height: 90%;
+    }
+}

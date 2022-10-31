@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDLago_01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblArticulo">
+    <Key>
+      <PropertyRef Name="IDArticulos" />
+    </Key>
+    <Property Name="IDArticulos" Type="Int32" Nullable="false" />
+    <Property Name="NombreArticulos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="UnidadMedidas" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PrecioCompra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PrecioVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Impuestos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDProveedor" Type="Int32" Nullable="false" />
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblCategoria" Relationship="Self.FK_tblArticulo_tblCategoria" FromRole="tblArticulo" ToRole="tblCategoria" />
+    <NavigationProperty Name="tblProveedor" Relationship="Self.FK_tblArticulo_tblProveedor" FromRole="tblArticulo" ToRole="tblProveedor" />
+    <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblArticulo" ToRole="tblDetFactura" />
+  </EntityType>
+  <EntityType Name="tblCategoria">
+    <Key>
+      <PropertyRef Name="IDCategoria" />
+    </Key>
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+    <Property Name="NombCategoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblArticulo_tblCategoria" FromRole="tblCategoria" ToRole="tblArticulo" />
+  </EntityType>
+  <EntityType Name="tblDetFactura">
+    <Key>
+      <PropertyRef Name="IDDetFactura" />
+    </Key>
+    <Property Name="IDDetFactura" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SubTotal" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Total" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IDArticulos" Type="Int32" Nullable="false" />
+    <Property Name="IDFactura" Type="Int32" Nullable="false" />
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblDetFactura" ToRole="tblArticulo" />
+    <NavigationProperty Name="tblFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblDetFactura" ToRole="tblFactura" />
+    <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblDetFactura" ToRole="tblUsuario" />
+  </EntityType>
+  <EntityType Name="tblEmpleado">
+    <Key>
+      <PropertyRef Name="IDEmpleado" />
+    </Key>
+    <Property Name="IDEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Direccion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblUsuario_tblEmpleado" FromRole="tblEmpleado" ToRole="tblUsuario" />
+  </EntityType>
+  <EntityType Name="tblFactura">
+    <Key>
+      <PropertyRef Name="IDFactura" />
+    </Key>
+    <Property Name="IDFactura" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NombCompCliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubTotal" Type="Double" Nullable="false" />
+    <Property Name="Iva" Type="Double" Nullable="false" />
+    <Property Name="Total" Type="Double" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblFactura" ToRole="tblDetFactura" />
+  </EntityType>
+  <EntityType Name="tblProveedor">
+    <Key>
+      <PropertyRef Name="IDProveedor" />
+    </Key>
+    <Property Name="IDProveedor" Type="Int32" Nullable="false" />
+    <Property Name="NombNegocio" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Municipio" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Departamento" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblArticulo_tblProveedor" FromRole="tblProveedor" ToRole="tblArticulo" />
+  </EntityType>
+  <EntityType Name="tblUsuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rol" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblUsuario" ToRole="tblDetFactura" />
+    <NavigationProperty Name="tblEmpleado" Relationship="Self.FK_tblUsuario_tblEmpleado" FromRole="tblUsuario" ToRole="tblEmpleado" />
+  </EntityType>
+  <Association Name="FK_tblArticulo_tblCategoria">
+    <End Role="tblCategoria" Type="Self.tblCategoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCategoria">
+        <PropertyRef Name="IDCategoria" />
+      </Principal>
+      <Dependent Role="tblArticulo">
+        <PropertyRef Name="IDCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblArticulo_tblProveedor">
+    <End Role="tblProveedor" Type="Self.tblProveedor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProveedor">
+        <PropertyRef Name="IDProveedor" />
+      </Principal>
+      <Dependent Role="tblArticulo">
+        <PropertyRef Name="IDProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDetFactura_tblArticulo">
+    <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblDetFactura" Type="Self.tblDetFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblArticulo">
+        <PropertyRef Name="IDArticulos" />
+      </Principal>
+      <Dependent Role="tblDetFactura">
+        <PropertyRef Name="IDArticulos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDetFactura_tblFactura">
+    <End Role="tblFactura" Type="Self.tblFactura" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblDetFactura" Type="Self.tblDetFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFactura">
+        <PropertyRef Name="IDFactura" />
+      </Principal>
+      <Dependent Role="tblDetFactura">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblDetFactura_tblUsuario">
+    <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblDetFactura" Type="Self.tblDetFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsuario">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="tblDetFactura">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUsuario_tblEmpleado">
+    <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUsuario" Type="Self.tblUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEmpleado">
+        <PropertyRef Name="IDEmpleado" />
+      </Principal>
+      <Dependent Role="tblUsuario">
+        <PropertyRef Name="IDEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDLago_01Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblArticulo" EntityType="Self.tblArticulo" />
+    <EntitySet Name="tblCategoria" EntityType="Self.tblCategoria" />
+    <EntitySet Name="tblDetFactura" EntityType="Self.tblDetFactura" />
+    <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" />
+    <EntitySet Name="tblFactura" EntityType="Self.tblFactura" />
+    <EntitySet Name="tblProveedor" EntityType="Self.tblProveedor" />
+    <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
+    <AssociationSet Name="FK_tblArticulo_tblCategoria" Association="Self.FK_tblArticulo_tblCategoria">
+      <End Role="tblCategoria" EntitySet="tblCategoria" />
+      <End Role="tblArticulo" EntitySet="tblArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblArticulo_tblProveedor" Association="Self.FK_tblArticulo_tblProveedor">
+      <End Role="tblProveedor" EntitySet="tblProveedor" />
+      <End Role="tblArticulo" EntitySet="tblArticulo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDetFactura_tblArticulo" Association="Self.FK_tblDetFactura_tblArticulo">
+      <End Role="tblArticulo" EntitySet="tblArticulo" />
+      <End Role="tblDetFactura" EntitySet="tblDetFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDetFactura_tblFactura" Association="Self.FK_tblDetFactura_tblFactura">
+      <End Role="tblFactura" EntitySet="tblFactura" />
+      <End Role="tblDetFactura" EntitySet="tblDetFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblDetFactura_tblUsuario" Association="Self.FK_tblDetFactura_tblUsuario">
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+      <End Role="tblDetFactura" EntitySet="tblDetFactura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUsuario_tblEmpleado" Association="Self.FK_tblUsuario_tblEmpleado">
+      <End Role="tblEmpleado" EntitySet="tblEmpleado" />
+      <End Role="tblUsuario" EntitySet="tblUsuario" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BDLago_01Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BDLago_01Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

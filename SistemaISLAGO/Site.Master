@@ -1,0 +1,308 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SistemaISLAGO.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
+
+
+    <link href="~/Content/img/ISLAGOfavicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="~/Content/css/ISLAGO.css">
+    <link rel="stylesheet" href="~/Content/css/venta.css">
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%-- <asp:ScriptReference Name="ISLAGO.js" Assembly="System.Web" Path="~/Content/js/ISLAGO.js" />  %>
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+       <%-- <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Inicio</a></li>
+                        <li><a runat="server" href="~/About">Acerca de</a></li>
+                        <li><a runat="server" href="~/Contact">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>--%>
+
+        <header>
+        
+        <div class="menu_superior-todo">
+            <nav>
+                <div class="bar_login">
+                    <img src="../Content/img/LAGOlogo.png" alt="" Width="90px" Height="80px">
+                    <h5>Example@example</h5>
+                    <h6>ISLAGO</h6>
+                </div>
+
+                <%-- Reloj Inicio--%>
+                <%--<div class="reloj navbar-header">
+                        <script type="text/javascript">
+
+                            function reloj() {
+                                var hoy = new Date(); var h = hoy.getHours(); var m = hoy.getMinutes(); var s = hoy.getSeconds();
+                                m = actualizarHora(m); s = actualizarHora(s);
+                                document.getElementById('displayReloj').innerHTML = h + ":" + m + ":" + s;
+                                var t = setTimeout(function () { reloj() }, 500);
+                            }
+
+                            function actualizarHora(i) {
+                                if (i < 10) { i = "0" + i };  // Añadir el cero en números menores de 10
+                                return i;
+                            }
+                        </script>
+                        <body onload="reloj()" >
+                        <div style="text-align:center;">
+                        <div style="color:white; margin-left:30px; border:double; border-radius:10px ; font-family: verdana, arial; font-size:20px; padding:10px; width:90% " id ="displayReloj" >
+                        </div>
+                        </div>
+                        </body>
+                </div>--%>
+                <%-- Reloj Fin--%>
+
+                <ul class="menu_superior">
+                    <li><a href="index.html"><img src="../Content/img/home.png" width="30px" height="30px" class="img-aling"/><br>Home</a></li>
+                    <li><a href="venta.html"><img src="../Content/img/carrito-de-compras.png" width="30px" height="30px" class="img-aling"/><br>Venta</a></li>
+                    <li><a href="articulos.html"><img src="../Content/img/caja.png" width="30px" height="30px" class="img-aling"/><br>Articulos</a></li>
+                    <li><a href="compra.html"><img src="../Content/img/compra.png" width="30px" height="30px" class="img-aling"/><br>Compra</a></li>
+                    <li><a href="repventas.html"><img src="../Content/img/carpeta.png" width="35px" height="30px" class="img-aling-R"/><br>Rep. Ventas</a></li>
+                    <li><a href="Catálogos/PageDocentes.aspx"><img src="../Content/img/proveedor (1).png" width="30px" height="30px" class="img-aling-P"/><br>Catálogos/PageDocentes.aspx</a></li>
+                    <li><a href="repcompras.html"><img src="../Content/img/carpeta.png" width="35px" height="30px" class="img-aling-R"/><br>Rep. Compras</a></li>
+                    <li><a href="Config.html"><img src="../Content/img/configuracion.png" width="30px" height="30px" class="img-aling"/><br>Config.</a></a></li>
+                    <li><a href="ayuda.html"><img src="../Content/img/Ayuda.png" width="30px" height="30px" class="img-aling"/><br>Ayuda</a></li>
+                    <li><a href="#" class="btnLogOut"><img src="../Content/img/cerrar-sesion.png" width="30px" height="30px" class="img-aling"/><br>Log out</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <div class="menu_lateral-todo">
+            <nav>
+                <ul class="menu_lateral">
+                    <li><a href="#">Movimientos</a></li>
+                    <li><a href="#">Registros</a></li>
+                    <li><a href="#">Grafica Ventas</a></li>
+                    <li><a href="#">Venta por fechas</a></li>
+                    <li><a href="#">Listado de productos</a></li>
+                    <li><a href="#">Detaelle ventas compras</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+        <%--<asp:ContentPlaceHolder ID="ContentPrincipal" runat="server">
+
+           <%-- <div class="container">
+        <section class="flex-container">
+            <form action="" class="formulario__venta">
+                <div class="parrafo__principal">
+                    <h3 class="principal__text">Nueva venta</h3>
+                </div>
+                <div class="first__section">
+                    <label for="" class="formlabel1">Fecha</label>
+                    <input type="date" class="forminput1" placeholder="XX/XX/XX">
+                    <label for="" class="formlabel1">N.Factura</label>
+                    <input type="text" class="form__nfactura" placeholder="#000">
+                    <label for="" class="formlabel1">Nombre Cliente</label>
+                    <input type="text" class="forminput1" placeholder="Client name">
+                </div>
+                <div class="seccion_numero2">
+                    <select name="" id="" class="seleccion__productos">
+                        <option value="">~~Seleccione su producto~~</option>
+                        <option value="">Cuarton 2x3x5</option>
+                        <option value="">Clavador 2x2x6</option>
+                    </select>
+                    <input type="number"  class="form__cantidad" placeholder="cantidad">
+                    <input type="number" min="0" class="form__precio" placeholder="precio">
+                    <button type="button" class="btnInsertar">Insertar</button>
+                </div>
+                <!--tabla nueva venta-->
+                <div class="tabla__venta">
+                    <div class="seccion_numero3">
+                        <table style="width: 100%," class="tblventa">
+                            <tr>
+                                <!--encabezados-->
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>cantidad</th>
+                                <th>precio unitario</th>
+                                <th>subtotal</th>
+                                <th>accion</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btndelete">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btndelete">Eliminar</button></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="contable__bar">
+                    <div class="seccion_numero4">
+                        <label for="">Descuento</label>
+                        <input type="text" class="input__descuento" placeholder="00,00">
+                        <label for="">subtotal</label>
+                        <input type="text" class="input__subtotal" placeholder="00,00$">
+                    </div>
+                    <div class="seccion_numero5">
+                        <label for="">%IVA</label>
+                        <input type="text" class="input__iva" placeholder="00,00%">
+                        <label for="" class="label__total">total</label>
+                        <input type="text" class="input__total" placeholder="00,00$">
+                        <button class="btnfacturar">Facturar</button>
+                        <button class="btnanular">Anular</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>--%>
+
+       <%-- </asp:ContentPlaceHolder>--%>
+
+        <%--<div class="container">
+        <section class="flex-container">
+            <form action="" class="formulario__venta">
+                <div class="parrafo__principal">
+                    <h3 class="principal__text">Nueva venta</h3>
+                </div>
+                <div class="first__section">
+                    <label for="" class="formlabel1">Fecha</label>
+                    <input type="date" class="forminput1" placeholder="XX/XX/XX">
+                    <label for="" class="formlabel1">N.Factura</label>
+                    <input type="text" class="form__nfactura" placeholder="#000">
+                    <label for="" class="formlabel1">Nombre Cliente</label>
+                    <input type="text" class="forminput1" placeholder="Client name">
+                </div>
+                <div class="seccion_numero2">
+                    <select name="" id="" class="seleccion__productos">
+                        <option value="">~~Seleccione su producto~~</option>
+                        <option value="">Cuarton 2x3x5</option>
+                        <option value="">Clavador 2x2x6</option>
+                    </select>
+                    <input type="number"  class="form__cantidad" placeholder="cantidad">
+                    <input type="number" min="0" class="form__precio" placeholder="precio">
+                    <button type="button" class="btnInsertar">Insertar</button>
+                </div>
+                <!--tabla nueva venta-->
+                <div class="tabla__venta">
+                    <div class="seccion_numero3">
+                        <table style="width: 100%," class="tblventa">
+                            <tr>
+                                <!--encabezados-->
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>cantidad</th>
+                                <th>precio unitario</th>
+                                <th>subtotal</th>
+                                <th>accion</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btndelete">Eliminar</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btndelete">Eliminar</button></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="contable__bar">
+                    <div class="seccion_numero4">
+                        <label for="">Descuento</label>
+                        <input type="text" class="input__descuento" placeholder="00,00">
+                        <label for="">subtotal</label>
+                        <input type="text" class="input__subtotal" placeholder="00,00$">
+                    </div>
+                    <div class="seccion_numero5">
+                        <label for="">%IVA</label>
+                        <input type="text" class="input__iva" placeholder="00,00%">
+                        <label for="" class="label__total">total</label>
+                        <input type="text" class="input__total" placeholder="00,00$">
+                        <button class="btnfacturar">Facturar</button>
+                        <button class="btnanular">Anular</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>--%>
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+        </div>
+
+   <footer>
+        <div class="pie_pagina">
+            <h4 class="copy_text">Sistema de Invetario LAGO | &copy;<%: DateTime.Now.Year %> ISLAGO.</h4>
+        </div>
+       
+    </footer>
+        
+
+    </form>
+</body>
+</html>
