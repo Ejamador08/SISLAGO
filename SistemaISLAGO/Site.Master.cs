@@ -16,6 +16,11 @@ namespace SistemaISLAGO
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Get connection string from web.config file  
+            //string strcon = ConfigurationManager.ConnectionStrings["BDLago_01Entities2"].ConnectionString;
+            ////create new sqlconnection and connection to database by using connection string from web.config file  
+            //SqlConnection con = new SqlConnection(strcon);
+            //con.Open();
 
         }
     }

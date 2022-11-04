@@ -15,13 +15,13 @@ namespace ClaseDatos
     public partial class tblDetFactura
     {
         public int IDDetFactura { get; set; }
-        public string Cantidad { get; set; }
-        public string SubTotal { get; set; }
-        public string Total { get; set; }
-        public string Estado { get; set; }
+        public int Cantidad { get; set; }
+        public float SubTotal { get; set; }
+        public float Total { get; set; }
         public int IDArticulos { get; set; }
         public int IDFactura { get; set; }
         public int IDUsuario { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual tblArticulo tblArticulo { get; set; }
         public virtual tblFactura tblFactura { get; set; }

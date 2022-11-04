@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CNegArticulo.cs" />
+    <Compile Include="CNegCategoria.cs" />
+    <Compile Include="CNegProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

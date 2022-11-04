@@ -25,9 +25,9 @@ namespace ClaseDatos
         public System.DateTime FechaIngreso { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
         public string UnidadMedidas { get; set; }
-        public string PrecioCompra { get; set; }
-        public string PrecioVenta { get; set; }
-        public string Impuestos { get; set; }
+        public float PrecioCompra { get; set; }
+        public float PrecioVenta { get; set; }
+        public float Impuestos { get; set; }
         public string Imagen { get; set; }
         public int IDProveedor { get; set; }
         public int IDCategoria { get; set; }

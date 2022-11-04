@@ -19,16 +19,16 @@
           <Key>
             <PropertyRef Name="IDArticulos" />
           </Key>
-          <Property Name="IDArticulos" Type="int" Nullable="false" />
+          <Property Name="IDArticulos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreArticulos" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="FechaIngreso" Type="date" Nullable="false" />
-          <Property Name="FechaVencimiento" Type="date" Nullable="false" />
-          <Property Name="UnidadMedidas" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="PrecioCompra" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PrecioVenta" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Impuestos" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Imagen" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+          <Property Name="UnidadMedidas" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PrecioCompra" Type="real" Nullable="false" />
+          <Property Name="PrecioVenta" Type="real" Nullable="false" />
+          <Property Name="Impuestos" Type="real" Nullable="false" />
+          <Property Name="Imagen" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="IDProveedor" Type="int" Nullable="false" />
           <Property Name="IDCategoria" Type="int" Nullable="false" />
           <Property Name="Estado" Type="bit" />
@@ -37,7 +37,7 @@
           <Key>
             <PropertyRef Name="IDCategoria" />
           </Key>
-          <Property Name="IDCategoria" Type="int" Nullable="false" />
+          <Property Name="IDCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombCategoria" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="Imagen" Type="varchar" MaxLength="50" Nullable="false" />
@@ -48,13 +48,13 @@
             <PropertyRef Name="IDDetFactura" />
           </Key>
           <Property Name="IDDetFactura" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="char" MaxLength="100" Nullable="false" />
-          <Property Name="SubTotal" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Total" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="SubTotal" Type="real" Nullable="false" />
+          <Property Name="Total" Type="real" Nullable="false" />
           <Property Name="IDArticulos" Type="int" Nullable="false" />
           <Property Name="IDFactura" Type="int" Nullable="false" />
           <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="tblEmpleado">
           <Key>
@@ -65,7 +65,7 @@
           <Property Name="SegundoNombre" Type="varchar" MaxLength="25" />
           <Property Name="PrimerApellido" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="SegundoApellido" Type="varchar" MaxLength="25" />
-          <Property Name="FechaNacimiento" Type="date" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
           <Property Name="Direccion" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="Telefono" Type="varchar" MaxLength="25" />
           <Property Name="Correo" Type="varchar" MaxLength="40" />
@@ -80,16 +80,16 @@
           <Property Name="IDFactura" Type="int" Nullable="false" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="NombCompCliente" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="SubTotal" Type="float" Nullable="false" />
-          <Property Name="Iva" Type="float" Nullable="false" />
-          <Property Name="Total" Type="float" Nullable="false" />
-          <Property Name="Estado" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SubTotal" Type="real" Nullable="false" />
+          <Property Name="Iva" Type="real" Nullable="false" />
+          <Property Name="Total" Type="real" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblProveedor">
           <Key>
             <PropertyRef Name="IDProveedor" />
           </Key>
-          <Property Name="IDProveedor" Type="int" Nullable="false" />
+          <Property Name="IDProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombNegocio" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="Direccion" Type="varchar" MaxLength="75" Nullable="false" />
           <Property Name="Telefono" Type="varchar" MaxLength="25" Nullable="false" />
@@ -280,16 +280,16 @@
           <Key>
             <PropertyRef Name="IDArticulos" />
           </Key>
-          <Property Name="IDArticulos" Type="Int32" Nullable="false" />
+          <Property Name="IDArticulos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreArticulos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="UnidadMedidas" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PrecioCompra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PrecioVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Impuestos" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UnidadMedidas" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrecioCompra" Type="Single" Nullable="false" />
+          <Property Name="PrecioVenta" Type="Single" Nullable="false" />
+          <Property Name="Impuestos" Type="Single" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProveedor" Type="Int32" Nullable="false" />
           <Property Name="IDCategoria" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
@@ -301,7 +301,7 @@
           <Key>
             <PropertyRef Name="IDCategoria" />
           </Key>
-          <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+          <Property Name="IDCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombCategoria" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -313,13 +313,13 @@
             <PropertyRef Name="IDDetFactura" />
           </Key>
           <Property Name="IDDetFactura" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="SubTotal" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Total" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="SubTotal" Type="Single" Nullable="false" />
+          <Property Name="Total" Type="Single" Nullable="false" />
           <Property Name="IDArticulos" Type="Int32" Nullable="false" />
           <Property Name="IDFactura" Type="Int32" Nullable="false" />
           <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" />
           <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblDetFactura" ToRole="tblArticulo" />
           <NavigationProperty Name="tblFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblDetFactura" ToRole="tblFactura" />
           <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblDetFactura" ToRole="tblUsuario" />
@@ -333,7 +333,7 @@
           <Property Name="SegundoNombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="PrimerApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SegundoApellido" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Direccion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
@@ -349,17 +349,17 @@
           <Property Name="IDFactura" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NombCompCliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SubTotal" Type="Double" Nullable="false" />
-          <Property Name="Iva" Type="Double" Nullable="false" />
-          <Property Name="Total" Type="Double" Nullable="false" />
-          <Property Name="Estado" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SubTotal" Type="Single" Nullable="false" />
+          <Property Name="Iva" Type="Single" Nullable="false" />
+          <Property Name="Total" Type="Single" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblFactura" ToRole="tblDetFactura" />
         </EntityType>
         <EntityType Name="tblProveedor">
           <Key>
             <PropertyRef Name="IDProveedor" />
           </Key>
-          <Property Name="IDProveedor" Type="Int32" Nullable="false" />
+          <Property Name="IDProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombNegocio" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
@@ -469,7 +469,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BDLago_01Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BDLago_01Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tblArticulo" EntityType="Self.tblArticulo" />
           <EntitySet Name="tblCategoria" EntityType="Self.tblCategoria" />
@@ -549,7 +549,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BDLago_01ModelStoreContainer" CdmEntityContainer="BDLago_01Entities2">
+        <EntityContainerMapping StorageEntityContainer="BDLago_01ModelStoreContainer" CdmEntityContainer="BDLago_01Entities1">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="BDLago_01Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -598,10 +598,10 @@
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
                 <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
                 <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
