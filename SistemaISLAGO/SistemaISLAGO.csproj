@@ -106,16 +106,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Catálogos\Marcas.aspx" />
     <Content Include="Catálogos\PageArticulo.aspx" />
+    <Content Include="Catálogos\PageCategoria.aspx" />
+    <Content Include="Catálogos\PageProveedor.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\ISLAGO.css" />
     <Content Include="Content\css\venta.css" />
     <Content Include="Content\img\Ayuda.png" />
     <Content Include="Content\img\caja.png" />
+    <Content Include="Content\img\Calendario.png" />
     <Content Include="Content\img\carpeta.png" />
     <Content Include="Content\img\carrito-de-compras.png" />
     <Content Include="Content\img\cerrar-sesion.png" />
@@ -190,12 +196,33 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Catálogos\Marcas.aspx.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catálogos\Marcas.aspx.designer.cs">
+      <DependentUpon>Marcas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catálogos\PageArticulo.aspx.cs">
       <DependentUpon>PageArticulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catálogos\PageArticulo.aspx.designer.cs">
       <DependentUpon>PageArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catálogos\PageCategoria.aspx.cs">
+      <DependentUpon>PageCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catálogos\PageCategoria.aspx.designer.cs">
+      <DependentUpon>PageCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catálogos\PageProveedor.aspx.cs">
+      <DependentUpon>PageProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catálogos\PageProveedor.aspx.designer.cs">
+      <DependentUpon>PageProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

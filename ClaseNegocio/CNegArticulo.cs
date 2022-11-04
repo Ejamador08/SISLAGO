@@ -50,5 +50,59 @@ namespace ClaseNegocio
             return art.MuestraXCantidad(cant);
         }
         #endregion
+
+        #region Muestra Artículo por ID
+        public CEntArtículo MuestraArticuloxID(int id)
+        {
+            CDatArtículo art = new CDatArtículo();
+
+            return art.MuestraArticuloxID(id);
+        }
+        #endregion
+
+        #region Dar de Baja a un Artículo
+        public bool BajaArticulo(int id)
+        {
+            CDatArtículo a = new CDatArtículo();
+
+            return a.BajaArticulo(id);
+        }
+        #endregion
+
+        #region Dar de Alta a un Artículo
+        public bool AltaArticulo(int id)
+        {
+            CDatArtículo a = new CDatArtículo();
+
+            return a.AltaArticulo(id);
+        }
+        #endregion
+
+        #region Muestra Articulos Inactivos
+        public List<CEntArtículo> MuestraArticulosInactivos()
+        {
+            CDatArtículo art = new CDatArtículo();
+
+            return art.MuestraArticulosInactivos();
+        }
+        #endregion
+
+        #region Muestra Articulos Activos por Nombre
+        public List<CEntArtículo> ArticulosActivosxNombre(string nombre)
+        {
+            CDatArtículo art = new CDatArtículo();
+
+            return art.ArticulosActivosxNombre(nombre);
+        }
+        #endregion
+
+        #region Muestra Articulos Inactivos por Nombre
+        public List<CEntArtículo> ArticulosInactivosxNombre(string nombre)
+        {
+            CDatArtículo art = new CDatArtículo();
+
+            return art.ArticulosInactivosxNombre(nombre);
+        }
+        #endregion
     }
 }

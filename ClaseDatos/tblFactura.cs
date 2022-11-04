@@ -22,10 +22,10 @@ namespace ClaseDatos
         public int IDFactura { get; set; }
         public System.DateTime Fecha { get; set; }
         public string NombCompCliente { get; set; }
-        public double SubTotal { get; set; }
-        public double Iva { get; set; }
-        public double Total { get; set; }
-        public string Estado { get; set; }
+        public float SubTotal { get; set; }
+        public float Iva { get; set; }
+        public float Total { get; set; }
+        public bool Estado { get; set; }
     
         public virtual ICollection<tblDetFactura> tblDetFactura { get; set; }
     }

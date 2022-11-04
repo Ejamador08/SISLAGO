@@ -49,61 +49,63 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CDatArtículo.cs" />
-    <Compile Include="ModelISLAGO.Context.cs">
+    <Compile Include="CDatCategoria.cs" />
+    <Compile Include="CDatProveedor.cs" />
+    <Compile Include="MSISLAGO.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelISLAGO.Context.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelISLAGO.cs">
+    <Compile Include="MSISLAGO.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelISLAGO.Designer.cs">
+    <Compile Include="MSISLAGO.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelISLAGO.edmx</DependentUpon>
+      <DependentUpon>MSISLAGO.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblArticulo.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCategoria.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDetFactura.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEmpleado.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFactura.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProveedor.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUsuario.cs">
-      <DependentUpon>ModelISLAGO.tt</DependentUpon>
+      <DependentUpon>MSISLAGO.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="ModelISLAGO.edmx">
+    <EntityDeploy Include="MSISLAGO.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelISLAGO.Designer.cs</LastGenOutput>
+      <LastGenOutput>MSISLAGO.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelISLAGO.edmx.diagram">
-      <DependentUpon>ModelISLAGO.edmx</DependentUpon>
+    <None Include="MSISLAGO.edmx.diagram">
+      <DependentUpon>MSISLAGO.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -117,15 +119,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelISLAGO.Context.tt">
+    <Content Include="MSISLAGO.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelISLAGO.edmx</DependentUpon>
-      <LastGenOutput>ModelISLAGO.Context.cs</LastGenOutput>
+      <DependentUpon>MSISLAGO.edmx</DependentUpon>
+      <LastGenOutput>MSISLAGO.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelISLAGO.tt">
+    <Content Include="MSISLAGO.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelISLAGO.edmx</DependentUpon>
-      <LastGenOutput>ModelISLAGO.cs</LastGenOutput>
+      <DependentUpon>MSISLAGO.edmx</DependentUpon>
+      <LastGenOutput>MSISLAGO.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
