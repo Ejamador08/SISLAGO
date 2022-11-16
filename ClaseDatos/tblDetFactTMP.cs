@@ -12,23 +12,21 @@ namespace ClaseDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class tblFactura
+    public partial class tblDetFactTMP
     {
-        public tblFactura()
-        {
-            this.tblDetFactura = new HashSet<tblDetFactura>();
-        }
-    
-        public int IDFactura { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string NombCompCliente { get; set; }
-        public float SubTotal { get; set; }
-        public float Iva { get; set; }
+        public int IDdetFactTMP { get; set; }
+        public int Cantidad { get; set; }
+        public float Subtotal { get; set; }
         public float Total { get; set; }
+        public int IDArticulos { get; set; }
+        public int IDFactura { get; set; }
+        public int IDUsuario { get; set; }
         public bool Estado { get; set; }
-        public string Anulada { get; set; }
-        public Nullable<int> IDUsuario { get; set; }
+        public float PrecioVenta { get; set; }
+        public float Descuento { get; set; }
+        public string Garantia { get; set; }
+        public string Username { get; set; }
     
-        public virtual ICollection<tblDetFactura> tblDetFactura { get; set; }
+        public virtual tblArticulo tblArticulo { get; set; }
     }
 }

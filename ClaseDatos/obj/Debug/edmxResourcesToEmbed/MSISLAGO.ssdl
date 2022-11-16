@@ -23,6 +23,7 @@
     <Property Name="PrecioCompra" Type="real" Nullable="false" />
     <Property Name="PrecioVenta" Type="real" Nullable="false" />
     <Property Name="Impuestos" Type="real" Nullable="false" />
+    <Property Name="Existencia" Type="int" />
     <Property Name="Imagen" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="IDProveedor" Type="int" Nullable="false" />
     <Property Name="IDCategoria" Type="int" Nullable="false" />
@@ -50,6 +51,9 @@
     <Property Name="IDFactura" Type="int" Nullable="false" />
     <Property Name="IDUsuario" Type="int" Nullable="false" />
     <Property Name="Estado" Type="bit" />
+    <Property Name="PrecioVenta" Type="real" />
+    <Property Name="Descuento" Type="real" />
+    <Property Name="Garantia" Type="varchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="tblEmpleado">
     <Key>
@@ -75,10 +79,9 @@
     <Property Name="IDFactura" Type="int" Nullable="false" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
     <Property Name="NombCompCliente" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="SubTotal" Type="real" Nullable="false" />
-    <Property Name="Iva" Type="real" Nullable="false" />
     <Property Name="Total" Type="real" Nullable="false" />
-    <Property Name="Estado" Type="bit" Nullable="false" />
+    <Property Name="Anulada" Type="varchar" MaxLength="50" />
+    <Property Name="IDUsuario" Type="int" />
   </EntityType>
   <EntityType Name="tblProveedor">
     <Key>
@@ -107,34 +110,6 @@
     <Property Name="IDEmpleado" Type="int" Nullable="false" />
     <Property Name="Estado" Type="bit" />
   </EntityType>
-  <Association Name="FK_tblArticulo_tblCategoria">
-    <End Role="tblCategoria" Type="Self.tblCategoria" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblCategoria">
-        <PropertyRef Name="IDCategoria" />
-      </Principal>
-      <Dependent Role="tblArticulo">
-        <PropertyRef Name="IDCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tblArticulo_tblProveedor">
-    <End Role="tblProveedor" Type="Self.tblProveedor" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tblProveedor">
-        <PropertyRef Name="IDProveedor" />
-      </Principal>
-      <Dependent Role="tblArticulo">
-        <PropertyRef Name="IDProveedor" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tblDetFactura_tblArticulo">
     <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -231,14 +206,6 @@
     <EntitySet Name="tblFactura" EntityType="Self.tblFactura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblProveedor" EntityType="Self.tblProveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_tblArticulo_tblCategoria" Association="Self.FK_tblArticulo_tblCategoria">
-      <End Role="tblCategoria" EntitySet="tblCategoria" />
-      <End Role="tblArticulo" EntitySet="tblArticulo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tblArticulo_tblProveedor" Association="Self.FK_tblArticulo_tblProveedor">
-      <End Role="tblProveedor" EntitySet="tblProveedor" />
-      <End Role="tblArticulo" EntitySet="tblArticulo" />
-    </AssociationSet>
     <AssociationSet Name="FK_tblDetFactura_tblArticulo" Association="Self.FK_tblDetFactura_tblArticulo">
       <End Role="tblArticulo" EntitySet="tblArticulo" />
       <End Role="tblDetFactura" EntitySet="tblDetFactura" />

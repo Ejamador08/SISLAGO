@@ -128,6 +128,8 @@
     <Content Include="Content\img\compra.png" />
     <Content Include="Content\img\configuracion.png" />
     <Content Include="Content\img\factura.png" />
+    <Content Include="Content\img\Iconos\check.png" />
+    <Content Include="Content\img\INGENIERIA-MECANICA.png" />
     <Content Include="Content\img\ISLAGOfavicon.ico" />
     <Content Include="Content\img\gestion-de-la-cadena-de-suministro.png" />
     <Content Include="Content\img\home.png" />
@@ -138,6 +140,7 @@
     <Content Include="Content\js\ISLAGO.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Facturas\Facturación.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -238,6 +241,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Facturas\Facturación.aspx.cs">
+      <DependentUpon>Facturación.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Facturas\Facturación.aspx.designer.cs">
+      <DependentUpon>Facturación.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -266,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

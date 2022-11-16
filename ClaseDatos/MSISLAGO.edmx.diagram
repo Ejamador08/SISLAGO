@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="BDLago_01Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDLago_01Model.tblArticulo" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BDLago_01Model.tblCategoria" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDLago_01Model.tblDetFactura" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDLago_01Model.tblDetFactura" Width="1.5" PointX="5.875" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BDLago_01Model.tblEmpleado" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BDLago_01Model.tblFactura" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BDLago_01Model.tblProveedor" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
@@ -19,6 +19,8 @@
         <AssociationConnector Association="BDLago_01Model.FK_tblDetFactura_tblFactura" ManuallyRouted="false" />
         <AssociationConnector Association="BDLago_01Model.FK_tblDetFactura_tblUsuario" ManuallyRouted="false" />
         <AssociationConnector Association="BDLago_01Model.FK_tblUsuario_tblEmpleado" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BDLago_01Model.tblDetFactTMP" Width="1.5" PointX="9" PointY="2.625" />
+        <AssociationConnector Association="BDLago_01Model.tblArticulotblDetFactTMP" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

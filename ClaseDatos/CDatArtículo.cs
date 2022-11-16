@@ -29,6 +29,7 @@ namespace ClaseDatos
             art.PrecioCompra = nuevo.PrecioCompra;
             art.PrecioVenta = nuevo.PrecioVenta;
             art.Impuestos = nuevo.Impuestos;
+            art.Existencia = nuevo.Existencia;
             art.Imagen = nuevo.Imagen;
             art.IDProveedor = nuevo.IDProveedor;
             art.IDCategoria = nuevo.IDCategoria;
@@ -60,6 +61,7 @@ namespace ClaseDatos
                                 PrecioCompra=art.PrecioCompra,
                                 PrecioVenta=art.PrecioVenta,
                                 Impuestos=art.Impuestos,
+                                Existencia=art.Existencia,
                                 Imagen=art.Imagen,
                                 IDProveedor=art.IDProveedor,
                                 IDCategoria=art.IDCategoria,
@@ -86,6 +88,8 @@ namespace ClaseDatos
             art.UnidadMedidas = nuevo.UnidadMedidas;
             art.PrecioCompra = nuevo.PrecioCompra;
             art.PrecioVenta = nuevo.PrecioVenta;
+            art.Impuestos = nuevo.Impuestos;
+            art.Existencia = nuevo.Existencia;
             art.Imagen = nuevo.Imagen;
             art.IDProveedor = nuevo.IDProveedor;
             art.IDCategoria = nuevo.IDCategoria;
@@ -128,6 +132,7 @@ namespace ClaseDatos
                                 PrecioCompra = art.PrecioCompra,
                                 PrecioVenta = art.PrecioVenta,
                                 Impuestos = art.Impuestos,
+                                Existencia = art.Existencia,
                                 Imagen = art.Imagen,
                                 IDProveedor = art.IDProveedor,
                                 IDCategoria = art.IDCategoria,
@@ -159,6 +164,7 @@ namespace ClaseDatos
                 art.PrecioCompra = article.PrecioCompra;
                 art.PrecioVenta = article.PrecioVenta;
                 art.Impuestos = article.Impuestos;
+                art.Existencia = article.Existencia;
                 art.IDProveedor = article.IDProveedor;
                 art.IDCategoria = article.IDCategoria;
                 art.Estado = article.Estado;
@@ -213,6 +219,7 @@ namespace ClaseDatos
                                 PrecioCompra = art.PrecioCompra,
                                 PrecioVenta = art.PrecioVenta,
                                 Impuestos = art.Impuestos,
+                                Existencia = art.Existencia,
                                 Imagen = art.Imagen,
                                 IDProveedor = art.IDProveedor,
                                 IDCategoria = art.IDCategoria,
@@ -245,6 +252,7 @@ namespace ClaseDatos
                                 PrecioCompra = art.PrecioCompra,
                                 PrecioVenta = art.PrecioVenta,
                                 Impuestos = art.Impuestos,
+                                Existencia = art.Existencia,
                                 Imagen = art.Imagen,
                                 IDProveedor = art.IDProveedor,
                                 IDCategoria = art.IDCategoria,
@@ -277,6 +285,7 @@ namespace ClaseDatos
                                 PrecioCompra = art.PrecioCompra,
                                 PrecioVenta = art.PrecioVenta,
                                 Impuestos = art.Impuestos,
+                                Existencia = art.Existencia,
                                 Imagen = art.Imagen,
                                 IDProveedor = art.IDProveedor,
                                 IDCategoria = art.IDCategoria,
@@ -287,6 +296,65 @@ namespace ClaseDatos
                             }).ToList();
 
             return Consulta;
+        }
+        #endregion
+
+        #region Muestra articulo x ID para facturar
+        public List<CEntArtículo> ArticuloxIDFactura(int id)
+        {
+            var consulta = (from a in context.tblArticulo
+                            where a.IDArticulos==id
+                            select new CEntArtículo
+                            {
+                                IDArticulos = a.IDArticulos,
+                                NombreArticulos = a.NombreArticulos,
+                                Descripcion = a.Descripcion,
+                                FechaIngreso = a.FechaIngreso,
+                                FechaVencimiento = a.FechaVencimiento,
+                                UnidadMedidas = a.UnidadMedidas,
+                                PrecioCompra = a.PrecioCompra,
+                                PrecioVenta = a.PrecioVenta,
+                                Impuestos = a.Impuestos,
+                                Existencia = a.Existencia,
+                                Imagen = a.Imagen,
+                                IDProveedor = a.IDProveedor,
+                                IDCategoria = a.IDCategoria,
+                                Estado = a.Estado
+                            }).ToList();
+
+            return consulta;
+        }
+        #endregion
+
+        #region Muestra Articulo para Factura
+        public List<CEntArtículo> MuestraArticuloFactura(int id)
+        {
+            var consulta=(from art in context.tblArticulo
+                          join p in context.tblProveedor on art.IDProveedor equals p.IDProveedor
+                          join c in context.tblCategoria on art.IDCategoria equals c.IDCategoria
+                          orderby art.IDArticulos descending
+                          where art.Estado == true
+                          select new CEntArtículo
+                          {
+                              IDArticulos = art.IDArticulos,
+                              NombreArticulos = art.NombreArticulos,
+                              Descripcion = art.Descripcion,
+                              FechaIngreso = art.FechaIngreso,
+                              FechaVencimiento = art.FechaVencimiento,
+                              UnidadMedidas = art.UnidadMedidas,
+                              PrecioCompra = art.PrecioCompra,
+                              PrecioVenta = art.PrecioVenta,
+                              Impuestos = art.Impuestos,
+                              Existencia = art.Existencia,
+                              Imagen = art.Imagen,
+                              IDProveedor = art.IDProveedor,
+                              IDCategoria = art.IDCategoria,
+                              Estado = art.Estado,
+
+                              NombreProveedor = p.NombNegocio,
+                              NombreCategoria = c.NombCategoria
+                          }).ToList();
+            return consulta;
         }
         #endregion
     }

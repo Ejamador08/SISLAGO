@@ -101,11 +101,11 @@
                             <img src="../Content/img/proveedor (1).png" width="30px" height="30px" class="img-aling-P" /><br>
                             Proveedor</a></li>
                         <li><a href="../Catálogos/PageCategoria.aspx">
-                            <img src="../Content/img/proveedor (1).png" width="30px" height="30px" class="img-aling-P" /><br>
+                            <img src="../Content/img/ingenieria-mecanica.png" width="30px" height="30px" class="img-aling-P" /><br>
                             Categoría</a></li>
-                        <li><a href="venta.html">
+                        <li><a href="../Facturas/Facturación.aspx">
                             <img src="../Content/img/carrito-de-compras.png" width="30px" height="30px" class="img-aling" /><br>
-                            Venta</a></li>
+                            Factura</a></li>
                         <li><a href="repventas.html">
                             <img src="../Content/img/carpeta.png" width="35px" height="30px" class="img-aling-R" /><br>
                             Rep. Ventas</a></li>

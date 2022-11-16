@@ -15,6 +15,7 @@
     <EntitySetMapping Name="tblArticulo">
       <EntityTypeMapping TypeName="BDLago_01Model.tblArticulo">
         <MappingFragment StoreEntitySet="tblArticulo">
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
           <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
           <ScalarProperty Name="NombreArticulos" ColumnName="NombreArticulos" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -43,16 +44,19 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="tblDetFactura">
-      <EntityTypeMapping TypeName="BDLago_01Model.tblDetFactura">
+      <EntityTypeMapping TypeName="IsTypeOf(BDLago_01Model.tblDetFactura)">
         <MappingFragment StoreEntitySet="tblDetFactura">
           <ScalarProperty Name="IDDetFactura" ColumnName="IDDetFactura" />
-          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
-          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
-          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+          <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+          <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+          <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -77,13 +81,12 @@
     <EntitySetMapping Name="tblFactura">
       <EntityTypeMapping TypeName="BDLago_01Model.tblFactura">
         <MappingFragment StoreEntitySet="tblFactura">
+          <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+          <ScalarProperty Name="Anulada" ColumnName="Anulada" />
           <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="NombCompCliente" ColumnName="NombCompCliente" />
-          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-          <ScalarProperty Name="Iva" ColumnName="Iva" />
           <ScalarProperty Name="Total" ColumnName="Total" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
