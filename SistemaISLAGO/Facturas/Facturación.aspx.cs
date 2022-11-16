@@ -89,7 +89,7 @@ namespace SistemaISLAGO.Facturas
 
                 txtExistencia.Text = stock.ToString();
 
-                ent.Username = HttpContext.Current.User.Identity.Name;
+                ent.Username = "elias08";
 
                 neg.GuardaTMP(ent);
             }
@@ -126,8 +126,8 @@ namespace SistemaISLAGO.Facturas
             txtCantidad.Text = "";
             txttotalventa.Visible = true;
             btnCancelar.Visible = true;
-            DetalleTmp.Username = HttpContext.Current.User.Identity.Name;
-            GridTemporal(HttpContext.Current.User.Identity.Name);
+            DetalleTmp.Username = "elias08";
+            GridTemporal("elias08");
         }
 
         protected void GridViewArticuloFactura_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -280,7 +280,7 @@ namespace SistemaISLAGO.Facturas
                 bool rpta = neg.EliminaTemporal(codigo);
                 if (rpta)
                 {
-                    GridTemporal(HttpContext.Current.User.Identity.Name);
+                    GridTemporal("elias08");
                 }
             }
             if (e.CommandName=="Disminuir")
@@ -301,7 +301,7 @@ namespace SistemaISLAGO.Facturas
 
                     tmp.Cantidad(count, codigo);
 
-                    GridTemporal(HttpContext.Current.User.Identity.Name);
+                    GridTemporal("elias08");
                 }
             }
         }

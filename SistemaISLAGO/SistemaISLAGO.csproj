@@ -50,6 +50,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -199,6 +200,8 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Catálogos\BDLago_01Entities2.cs" />
+    <Compile Include="Catálogos\CDatFactura.cs" />
     <Compile Include="Catálogos\Marcas.aspx.cs">
       <DependentUpon>Marcas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

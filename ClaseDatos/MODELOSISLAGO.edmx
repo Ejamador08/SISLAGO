@@ -89,7 +89,7 @@
           <Key>
             <PropertyRef Name="IDEmpleado" />
           </Key>
-          <Property Name="IDEmpleado" Type="int" Nullable="false" />
+          <Property Name="IDEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PrimerNombre" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="SegundoNombre" Type="varchar" MaxLength="25" />
           <Property Name="PrimerApellido" Type="varchar" MaxLength="25" Nullable="false" />
@@ -132,7 +132,7 @@
           <Key>
             <PropertyRef Name="IDUsuario" />
           </Key>
-          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Rol" Type="varchar" MaxLength="25" Nullable="false" />

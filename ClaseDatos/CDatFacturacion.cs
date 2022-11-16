@@ -9,9 +9,10 @@ using CapaEntidad;
 
 namespace ClaseDatos
 {
-    public class CDatFactura
+    public class CDatFacturacion
     {
         BDLago_01Entities2 context = new BDLago_01Entities2();
+
         #region Última Factura
         public int UltimaFactura()
         {
@@ -28,7 +29,7 @@ namespace ClaseDatos
 
         #region Actividades en tabla Temporal
 
-        
+
         #region Muestra Grid Detalle Temporal Factura
         public List<CEntDetalleFacturaTMP> MuestraTemporal(string user)
         {
@@ -156,7 +157,7 @@ namespace ClaseDatos
         #region Realizar Factura Fisica
         public bool FacturarTransaccion(CEntFactura fact, string user)
         {
-            using(TransactionScope scope=new TransactionScope())
+            using (TransactionScope scope = new TransactionScope())
             {
                 try
                 {

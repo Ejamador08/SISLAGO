@@ -12,13 +12,10 @@ namespace ClaseDatos
     {
         BDLago_01Entities2 context = new BDLago_01Entities2();
 
-        //List<CEntArtículo> articulo = new List<CEntArtículo>();
-
-
         #region C >> Create >> Insertar
         public bool GuardaNuevoArticulo(CEntArtículo nuevo)
         {
-            tblArticulo art = new tblArticulo();
+            tblArticulo art = new tblArticulo();           
 
             art.IDArticulos = nuevo.IDArticulos;
             art.NombreArticulos = nuevo.NombreArticulos;
