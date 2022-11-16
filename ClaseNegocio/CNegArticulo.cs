@@ -104,5 +104,21 @@ namespace ClaseNegocio
             return art.ArticulosInactivosxNombre(nombre);
         }
         #endregion
+
+        #region Muestra articulo x ID para facturar
+        public List<CEntArtículo> ArticuloxIDFactura(int id)
+        {
+            CDatArtículo art = new CDatArtículo();
+            return art.ArticuloxIDFactura(id);
+        }
+        #endregion
+
+        #region Muestra Articulo para Factura
+        public List<CEntArtículo> MuestraArticuloFactura(int id)
+        {
+            CDatArtículo d = new CDatArtículo();
+            return d.MuestraArticuloFactura(id);
+        }
+        #endregion
     }
 }

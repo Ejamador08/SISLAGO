@@ -22,6 +22,9 @@ namespace ClaseDatos
         public int IDFactura { get; set; }
         public int IDUsuario { get; set; }
         public Nullable<bool> Estado { get; set; }
+        public Nullable<float> PrecioVenta { get; set; }
+        public Nullable<float> Descuento { get; set; }
+        public string Garantia { get; set; }
     
         public virtual tblArticulo tblArticulo { get; set; }
         public virtual tblFactura tblFactura { get; set; }

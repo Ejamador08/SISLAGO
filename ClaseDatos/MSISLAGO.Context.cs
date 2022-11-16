@@ -36,6 +36,7 @@ namespace ClaseDatos
         public DbSet<tblFactura> tblFactura { get; set; }
         public DbSet<tblProveedor> tblProveedor { get; set; }
         public DbSet<tblUsuario> tblUsuario { get; set; }
+        public DbSet<tblDetFactTMP> tblDetFactTMPSet { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="CEntArtículo.cs" />
     <Compile Include="CEntCategoria.cs" />
+    <Compile Include="CEntDetalleFacturaTMP.cs" />
+    <Compile Include="CEntFactura.cs" />
     <Compile Include="CEntProveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
