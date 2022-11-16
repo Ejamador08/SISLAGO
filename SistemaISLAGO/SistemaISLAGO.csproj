@@ -200,8 +200,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Catálogos\BDLago_01Entities2.cs" />
-    <Compile Include="Catálogos\CDatFactura.cs" />
     <Compile Include="Catálogos\Marcas.aspx.cs">
       <DependentUpon>Marcas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
