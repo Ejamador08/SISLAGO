@@ -117,7 +117,7 @@
                 <center>
                     <h1><i class="glyphicon glyphicon-list">Detalle de la Factura</i></h1>
                 </center>
-                <asp:GridView ID="GridViewDetalle" CssClass="table table-bordered" AutoGenerateColumns="False" 
+                <asp:GridView ID="GridViewDetalle" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" 
                 OnRowCommand="GridViewDetalle_RowCommand" DataKeyNames="IDDetFacturaTMP" OnRowDataBound="GridViewDetalle_RowDataBound"
                 runat="server">
                 <HeaderStyle BackColor="#6c9ed7" HorizontalAlign="Center" />

@@ -54,6 +54,7 @@ namespace ClaseDatos
                                 Garantia = dt.Garantia,
                                 Username = dt.Username
                             }).ToList();
+
             foreach (var item in consulta)
             {
                 lista.Add(new CEntDetalleFacturaTMP

@@ -66,7 +66,7 @@ namespace SistemaISLAGO.Facturas
             }
             else
             {
-                ent.IDFactura = int.Parse(HiddenFieldArticulo.Value);
+                ent.IDArticulos = int.Parse(HiddenFieldArticulo.Value);
                 ent.PrecioVenta = Convert.ToSingle(txtprecio.Text);
                 ent.Cantidad = int.Parse(txtCantidad.Text);
                 ent.Garantia = txtgarantia.Text;
