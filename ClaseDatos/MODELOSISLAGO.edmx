@@ -15,6 +15,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="IDDetTmp" />
+          </Key>
+          <Property Name="IDDetTmp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDArticulo" Type="int" />
+          <Property Name="Subtotal" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="tblArticulo">
           <Key>
             <PropertyRef Name="IDArticulos" />
@@ -59,6 +67,23 @@
           <Property Name="PrecioVenta" Type="real" />
           <Property Name="Descuento" Type="real" />
           <Property Name="Garantia" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblDetFacturaTMP">
+          <Key>
+            <PropertyRef Name="IDDetFacturaTMP" />
+          </Key>
+          <Property Name="IDDetFacturaTMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Subtotal" Type="real" />
+          <Property Name="Total" Type="real" />
+          <Property Name="IDArticulos" Type="int" />
+          <Property Name="IDFactura" Type="int" />
+          <Property Name="IDUsuario" Type="int" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="PrecioVenta" Type="real" />
+          <Property Name="Descuento" Type="real" />
+          <Property Name="Garantia" Type="varchar" MaxLength="150" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblEmpleado">
           <Key>
@@ -157,6 +182,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblDetFacturaTMP_tblArticulo">
+          <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="0..1" />
+          <End Role="tblDetFacturaTMP" Type="Self.tblDetFacturaTMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticulo">
+              <PropertyRef Name="IDArticulos" />
+            </Principal>
+            <Dependent Role="tblDetFacturaTMP">
+              <PropertyRef Name="IDArticulos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblUsuario_tblEmpleado">
           <End Role="tblEmpleado" Type="Self.tblEmpleado" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -204,9 +241,11 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="BDLago_01ModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblArticulo" EntityType="Self.tblArticulo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategoria" EntityType="Self.tblCategoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDetFactura" EntityType="Self.tblDetFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDetFacturaTMP" EntityType="Self.tblDetFacturaTMP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblFactura" EntityType="Self.tblFactura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProveedor" EntityType="Self.tblProveedor" Schema="dbo" store:Type="Tables" />
@@ -222,6 +261,10 @@
           <AssociationSet Name="FK_tblDetFactura_tblUsuario" Association="Self.FK_tblDetFactura_tblUsuario">
             <End Role="tblUsuario" EntitySet="tblUsuario" />
             <End Role="tblDetFactura" EntitySet="tblDetFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDetFacturaTMP_tblArticulo" Association="Self.FK_tblDetFacturaTMP_tblArticulo">
+            <End Role="tblArticulo" EntitySet="tblArticulo" />
+            <End Role="tblDetFacturaTMP" EntitySet="tblDetFacturaTMP" />
           </AssociationSet>
           <AssociationSet Name="FK_tblUsuario_tblEmpleado" Association="Self.FK_tblUsuario_tblEmpleado">
             <End Role="tblEmpleado" EntitySet="tblEmpleado" />
@@ -242,6 +285,14 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Table_1">
+          <Key>
+            <PropertyRef Name="IDDetTmp" />
+          </Key>
+          <Property Name="IDDetTmp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDArticulo" Type="Int32" />
+          <Property Name="Subtotal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
         <EntityType Name="tblArticulo">
           <Key>
             <PropertyRef Name="IDArticulos" />
@@ -255,15 +306,13 @@
           <Property Name="PrecioCompra" Type="Single" Nullable="false" />
           <Property Name="PrecioVenta" Type="Single" Nullable="false" />
           <Property Name="Impuestos" Type="Single" Nullable="false" />
+          <Property Name="Existencia" Type="Int32" />
           <Property Name="Imagen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IDProveedor" Type="Int32" Nullable="false" />
           <Property Name="IDCategoria" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="tblCategoria" Relationship="Self.FK_tblArticulo_tblCategoria" FromRole="tblArticulo" ToRole="tblCategoria" />
-          <NavigationProperty Name="tblProveedor" Relationship="Self.FK_tblArticulo_tblProveedor" FromRole="tblArticulo" ToRole="tblProveedor" />
           <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblArticulo" ToRole="tblDetFactura" />
-          <Property Name="Existencia" Type="Int32" />
-          <NavigationProperty Name="tblDetFactTMP" Relationship="BDLago_01Model.tblArticulotblDetFactTMP" FromRole="tblArticulo" ToRole="tblDetFactTMP" />
+          <NavigationProperty Name="tblDetFacturaTMP" Relationship="Self.FK_tblDetFacturaTMP_tblArticulo" FromRole="tblArticulo" ToRole="tblDetFacturaTMP" />
         </EntityType>
         <EntityType Name="tblCategoria">
           <Key>
@@ -274,7 +323,6 @@
           <Property Name="Descripcion" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblArticulo_tblCategoria" FromRole="tblCategoria" ToRole="tblArticulo" />
         </EntityType>
         <EntityType Name="tblDetFactura">
           <Key>
@@ -288,12 +336,30 @@
           <Property Name="IDFactura" Type="Int32" Nullable="false" />
           <Property Name="IDUsuario" Type="Int32" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblDetFactura" ToRole="tblArticulo" />
-          <NavigationProperty Name="tblFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblDetFactura" ToRole="tblFactura" />
-          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblDetFactura" ToRole="tblUsuario" />
           <Property Name="PrecioVenta" Type="Single" />
           <Property Name="Descuento" Type="Single" />
           <Property Name="Garantia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblDetFactura_tblArticulo" FromRole="tblDetFactura" ToRole="tblArticulo" />
+          <NavigationProperty Name="tblFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblDetFactura" ToRole="tblFactura" />
+          <NavigationProperty Name="tblUsuario" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblDetFactura" ToRole="tblUsuario" />
+        </EntityType>
+        <EntityType Name="tblDetFacturaTMP">
+          <Key>
+            <PropertyRef Name="IDDetFacturaTMP" />
+          </Key>
+          <Property Name="IDDetFacturaTMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Subtotal" Type="Single" />
+          <Property Name="Total" Type="Single" />
+          <Property Name="IDArticulos" Type="Int32" />
+          <Property Name="IDFactura" Type="Int32" />
+          <Property Name="IDUsuario" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="PrecioVenta" Type="Single" />
+          <Property Name="Descuento" Type="Single" />
+          <Property Name="Garantia" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblDetFacturaTMP_tblArticulo" FromRole="tblDetFacturaTMP" ToRole="tblArticulo" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblEmpleado">
           <Key>
@@ -321,9 +387,9 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NombCompCliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Total" Type="Single" Nullable="false" />
-          <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblFactura" ToRole="tblDetFactura" />
           <Property Name="Anulada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IDUsuario" Type="Int32" />
+          <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblFactura" FromRole="tblFactura" ToRole="tblDetFactura" />
         </EntityType>
         <EntityType Name="tblProveedor">
           <Key>
@@ -339,7 +405,6 @@
           <Property Name="Departamento" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="Boolean" />
-          <NavigationProperty Name="tblArticulo" Relationship="Self.FK_tblArticulo_tblProveedor" FromRole="tblProveedor" ToRole="tblArticulo" />
         </EntityType>
         <EntityType Name="tblUsuario">
           <Key>
@@ -355,34 +420,6 @@
           <NavigationProperty Name="tblDetFactura" Relationship="Self.FK_tblDetFactura_tblUsuario" FromRole="tblUsuario" ToRole="tblDetFactura" />
           <NavigationProperty Name="tblEmpleado" Relationship="Self.FK_tblUsuario_tblEmpleado" FromRole="tblUsuario" ToRole="tblEmpleado" />
         </EntityType>
-        <Association Name="FK_tblArticulo_tblCategoria">
-          <End Role="tblCategoria" Type="Self.tblCategoria" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblCategoria">
-              <PropertyRef Name="IDCategoria" />
-            </Principal>
-            <Dependent Role="tblArticulo">
-              <PropertyRef Name="IDCategoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblArticulo_tblProveedor">
-          <End Role="tblProveedor" Type="Self.tblProveedor" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblProveedor">
-              <PropertyRef Name="IDProveedor" />
-            </Principal>
-            <Dependent Role="tblArticulo">
-              <PropertyRef Name="IDProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblDetFactura_tblArticulo">
           <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -393,6 +430,18 @@
               <PropertyRef Name="IDArticulos" />
             </Principal>
             <Dependent Role="tblDetFactura">
+              <PropertyRef Name="IDArticulos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblDetFacturaTMP_tblArticulo">
+          <End Role="tblArticulo" Type="Self.tblArticulo" Multiplicity="0..1" />
+          <End Role="tblDetFacturaTMP" Type="Self.tblDetFacturaTMP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticulo">
+              <PropertyRef Name="IDArticulos" />
+            </Principal>
+            <Dependent Role="tblDetFacturaTMP">
               <PropertyRef Name="IDArticulos" />
             </Dependent>
           </ReferentialConstraint>
@@ -439,26 +488,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BDLago_01Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BDLago_01Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Table_1" EntityType="Self.Table_1" />
           <EntitySet Name="tblArticulo" EntityType="Self.tblArticulo" />
           <EntitySet Name="tblCategoria" EntityType="Self.tblCategoria" />
           <EntitySet Name="tblDetFactura" EntityType="Self.tblDetFactura" />
+          <EntitySet Name="tblDetFacturaTMP" EntityType="Self.tblDetFacturaTMP" />
           <EntitySet Name="tblEmpleado" EntityType="Self.tblEmpleado" />
           <EntitySet Name="tblFactura" EntityType="Self.tblFactura" />
           <EntitySet Name="tblProveedor" EntityType="Self.tblProveedor" />
           <EntitySet Name="tblUsuario" EntityType="Self.tblUsuario" />
-          <AssociationSet Name="FK_tblArticulo_tblCategoria" Association="Self.FK_tblArticulo_tblCategoria">
-            <End Role="tblCategoria" EntitySet="tblCategoria" />
-            <End Role="tblArticulo" EntitySet="tblArticulo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblArticulo_tblProveedor" Association="Self.FK_tblArticulo_tblProveedor">
-            <End Role="tblProveedor" EntitySet="tblProveedor" />
-            <End Role="tblArticulo" EntitySet="tblArticulo" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblDetFactura_tblArticulo" Association="Self.FK_tblDetFactura_tblArticulo">
             <End Role="tblArticulo" EntitySet="tblArticulo" />
             <End Role="tblDetFactura" EntitySet="tblDetFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblDetFacturaTMP_tblArticulo" Association="Self.FK_tblDetFacturaTMP_tblArticulo">
+            <End Role="tblArticulo" EntitySet="tblArticulo" />
+            <End Role="tblDetFacturaTMP" EntitySet="tblDetFacturaTMP" />
           </AssociationSet>
           <AssociationSet Name="FK_tblDetFactura_tblFactura" Association="Self.FK_tblDetFactura_tblFactura">
             <End Role="tblFactura" EntitySet="tblFactura" />
@@ -502,12 +549,7 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="tblDetFactTMPSet" EntityType="BDLago_01Model.tblDetFactTMP" />
-          <AssociationSet Name="tblArticulotblDetFactTMP" Association="BDLago_01Model.tblArticulotblDetFactTMP">
-            <End Role="tblArticulo" EntitySet="tblArticulo" />
-            <End Role="tblDetFactTMP" EntitySet="tblDetFactTMPSet" />
-          </AssociationSet>
-          </EntityContainer>
+        </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -519,34 +561,12 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="tblDetFactTMP">
-          <Key>
-            <PropertyRef Name="IDdetFactTMP" />
-          </Key>
-          <Property Name="IDdetFactTMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Subtotal" Type="Single" Nullable="false" />
-          <Property Name="Total" Type="Single" Nullable="false" />
-          <Property Name="IDArticulos" Type="Int32" Nullable="false" />
-          <Property Name="IDFactura" Type="Int32" Nullable="false" />
-          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-          <Property Name="PrecioVenta" Type="Single" Nullable="false" />
-          <Property Name="Descuento" Type="Single" Nullable="false" />
-          <Property Name="Garantia" Type="String" Nullable="false" />
-          <NavigationProperty Name="tblArticulo" Relationship="BDLago_01Model.tblArticulotblDetFactTMP" FromRole="tblDetFactTMP" ToRole="tblArticulo" />
-          <Property Name="Username" Type="String" Nullable="false" />
-        </EntityType>
-        <Association Name="tblArticulotblDetFactTMP">
-          <End Type="BDLago_01Model.tblArticulo" Role="tblArticulo" Multiplicity="1" />
-          <End Type="BDLago_01Model.tblDetFactTMP" Role="tblDetFactTMP" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BDLago_01ModelStoreContainer" CdmEntityContainer="BDLago_01Entities1">
+        <EntityContainerMapping StorageEntityContainer="BDLago_01ModelStoreContainer" CdmEntityContainer="BDLago_01Entities2">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="BDLago_01Model.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -558,10 +578,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Table_1">
+            <EntityTypeMapping TypeName="BDLago_01Model.Table_1">
+              <MappingFragment StoreEntitySet="Table_1">
+                <ScalarProperty Name="IDDetTmp" ColumnName="IDDetTmp" />
+                <ScalarProperty Name="IDArticulo" ColumnName="IDArticulo" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblArticulo">
             <EntityTypeMapping TypeName="BDLago_01Model.tblArticulo">
               <MappingFragment StoreEntitySet="tblArticulo">
-                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
                 <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
                 <ScalarProperty Name="NombreArticulos" ColumnName="NombreArticulos" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -571,6 +599,7 @@
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
                 <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="IDProveedor" ColumnName="IDProveedor" />
                 <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
@@ -590,19 +619,37 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDetFactura">
-            <EntityTypeMapping TypeName="IsTypeOf(BDLago_01Model.tblDetFactura)">
+            <EntityTypeMapping TypeName="BDLago_01Model.tblDetFactura">
               <MappingFragment StoreEntitySet="tblDetFactura">
                 <ScalarProperty Name="IDDetFactura" ColumnName="IDDetFactura" />
-                <ScalarProperty Name="Garantia" ColumnName="Garantia" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
-                <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDetFacturaTMP">
+            <EntityTypeMapping TypeName="BDLago_01Model.tblDetFacturaTMP">
+              <MappingFragment StoreEntitySet="tblDetFacturaTMP">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="IDDetFacturaTMP" ColumnName="IDDetFacturaTMP" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="IDArticulos" ColumnName="IDArticulos" />
+                <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Garantia" ColumnName="Garantia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -627,12 +674,12 @@
           <EntitySetMapping Name="tblFactura">
             <EntityTypeMapping TypeName="BDLago_01Model.tblFactura">
               <MappingFragment StoreEntitySet="tblFactura">
-                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
-                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
                 <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="NombCompCliente" ColumnName="NombCompCliente" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Anulada" ColumnName="Anulada" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -689,7 +736,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BDLago_01Model.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BDLago_01Model.Store.sp_upgraddiagrams" />
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

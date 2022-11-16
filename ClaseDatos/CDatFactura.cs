@@ -11,7 +11,7 @@ namespace ClaseDatos
 {
     public class CDatFactura
     {
-        BDLago_01Entities1 context = new BDLago_01Entities1();
+        BDLago_01Entities2 context = new BDLago_01Entities2();
         #region Última Factura
         public int UltimaFactura()
         {
@@ -34,13 +34,13 @@ namespace ClaseDatos
         {
             List<CEntDetalleFacturaTMP> lista = new List<CEntDetalleFacturaTMP>();
 
-            var consulta = (from dt in context.tblDetFactTMPSet
+            var consulta = (from dt in context.tblDetFacturaTMP
                             join a in context.tblArticulo on dt.IDArticulos equals a.IDArticulos
                             where dt.Username == user
-                            orderby dt.IDdetFactTMP descending
+                            orderby dt.IDDetFacturaTMP descending
                             select new CEntDetalleFacturaTMP
                             {
-                                IDdetFactTMP = dt.IDdetFactTMP,
+                                IDDetFacturaTMP = dt.IDDetFacturaTMP,
                                 Cantidad = dt.Cantidad,
                                 Subtotal = dt.Subtotal,
                                 Total = dt.Total,
@@ -57,7 +57,7 @@ namespace ClaseDatos
             {
                 lista.Add(new CEntDetalleFacturaTMP
                 {
-                    IDdetFactTMP = item.IDdetFactTMP,
+                    IDDetFacturaTMP = item.IDDetFacturaTMP,
                     Cantidad = item.Cantidad,
                     Subtotal = Convert.ToSingle(item.PrecioVenta * item.Cantidad) - item.Descuento,
                     Total = item.Total,
@@ -80,11 +80,11 @@ namespace ClaseDatos
         {
             try
             {
-                tblDetFactTMP detalle = new tblDetFactTMP();
+                tblDetFacturaTMP detalle = new tblDetFacturaTMP();
 
-                if (!context.tblDetFactTMPSet.Any(x => x.IDArticulos == tmp.IDArticulos))
+                if (!context.tblDetFacturaTMP.Any(x => x.IDArticulos == tmp.IDArticulos))
                 {
-                    detalle.IDdetFactTMP = tmp.IDdetFactTMP;
+                    detalle.IDDetFacturaTMP = tmp.IDDetFacturaTMP;
                     detalle.Cantidad = tmp.Cantidad;
                     detalle.Subtotal = tmp.Subtotal;
                     detalle.Total = tmp.Total;
@@ -97,11 +97,11 @@ namespace ClaseDatos
                     detalle.Garantia = tmp.Garantia;
                     detalle.Username = tmp.Username;
 
-                    context.tblDetFactTMPSet.Add(detalle);
+                    context.tblDetFacturaTMP.Add(detalle);
                 }
                 else
                 {
-                    detalle = context.tblDetFactTMPSet.FirstOrDefault(x => x.IDArticulos == tmp.IDArticulos);
+                    detalle = context.tblDetFacturaTMP.FirstOrDefault(x => x.IDArticulos == tmp.IDArticulos);
                     detalle.PrecioVenta = tmp.PrecioVenta;
                     detalle.Cantidad = tmp.Cantidad;
                     detalle.Username = tmp.Username;
@@ -119,9 +119,9 @@ namespace ClaseDatos
         #region Cantidad Articulos Temporales
         public bool Cantidad(int cant, int id)
         {
-            tblDetFactTMP det = new tblDetFactTMP();
+            tblDetFacturaTMP det = new tblDetFacturaTMP();
 
-            det = context.tblDetFactTMPSet.FirstOrDefault(x => x.IDdetFactTMP == id);
+            det = context.tblDetFacturaTMP.FirstOrDefault(x => x.IDDetFacturaTMP == id);
 
             det.Cantidad = det.Cantidad - cant;
 
@@ -136,9 +136,9 @@ namespace ClaseDatos
         {
             try
             {
-                tblDetFactTMP tmp = context.tblDetFactTMPSet.FirstOrDefault(x => x.IDArticulos == id);
+                tblDetFacturaTMP tmp = context.tblDetFacturaTMP.FirstOrDefault(x => x.IDArticulos == id);
 
-                context.tblDetFactTMPSet.Remove(tmp);
+                context.tblDetFacturaTMP.Remove(tmp);
 
                 context.SaveChanges();
 
@@ -172,7 +172,7 @@ namespace ClaseDatos
                     context.tblFactura.Add(vta);
                     context.SaveChanges();
 
-                    var detalletmp = context.tblDetFactTMPSet.Where(d => d.Username == user).ToList();
+                    var detalletmp = context.tblDetFacturaTMP.Where(d => d.Username == user).ToList();
 
                     foreach (var item in detalletmp)
                     {
@@ -188,15 +188,15 @@ namespace ClaseDatos
                         var final = new tblDetFactura
                         {
                             IDFactura = vta.IDFactura,
-                            IDArticulos = tmp.IDArticulos,
+                            IDArticulos = Convert.ToInt32(tmp.IDArticulos),
                             PrecioVenta = tmp.PrecioVenta,
-                            Cantidad = tmp.Cantidad,
+                            Cantidad = Convert.ToInt32(tmp.Cantidad),
                             Descuento = tmp.Descuento,
-                            SubTotal = tmp.Descuento,
+                            SubTotal = Convert.ToSingle(tmp.Subtotal),
                             Garantia = tmp.Garantia
                         };
                         context.tblDetFactura.Add(final);
-                        context.tblDetFactTMPSet.Remove(tmp);
+                        context.tblDetFacturaTMP.Remove(tmp);
 
                         context.SaveChanges();
                     }

@@ -10,7 +10,7 @@ namespace ClaseDatos
 {
     public class CDatProveedor
     {
-        BDLago_01Entities1 context = new BDLago_01Entities1();
+        BDLago_01Entities2 context = new BDLago_01Entities2();
 
         #region C >> Create >> Insertar
         //public bool GuardaNuevaProveedor(CEntArtículo nuevo)
