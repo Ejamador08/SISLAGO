@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="CDatArtículo.cs" />
     <Compile Include="CDatCategoria.cs" />
-    <Compile Include="CDatFactura.cs" />
+    <Compile Include="CDatFacturacion.cs" />
     <Compile Include="CDatProveedor.cs" />
     <Compile Include="MODELOSISLAGO.Context.cs">
       <AutoGen>True</AutoGen>
