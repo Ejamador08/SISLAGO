@@ -98,7 +98,7 @@
                     </div>
                     <div class="col-md-2">
                         <label>Garantía</label>
-                        <asp:CheckBox ID="CheckGarantia" Checked="false" CssClass="form-control" runat="server" />
+                        <asp:TextBox ID="txtgarantia" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
@@ -118,18 +118,18 @@
                     <h1><i class="glyphicon glyphicon-list">Detalle de la Factura</i></h1>
                 </center>
                 <asp:GridView ID="GridViewDetalle" CssClass="table table-bordered" AutoGenerateColumns="False" 
-                OnRowCommand="GridViewDetalle_RowCommand" DataKeyNames="ID_DetalleTemp" OnRowDataBound="GridViewDetalle_RowDataBound"
+                OnRowCommand="GridViewDetalle_RowCommand" DataKeyNames="IDDetFacturaTMP" OnRowDataBound="GridViewDetalle_RowDataBound"
                 runat="server">
                 <HeaderStyle BackColor="#6c9ed7" HorizontalAlign="Center" />
                 <Columns>
-                    <asp:BoundField DataField="Nombre_Articulo" HeaderText="Nombre" />
-                    <asp:BoundField DataField="Precio" HeaderText="Precio" />
+                   <%-- <asp:BoundField DataField="Nombre_Articulo" HeaderText="Nombre" />--%>
+                    <asp:BoundField DataField="PrecioVenta" HeaderText="Precio" />
                     <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
                     <asp:BoundField DataField="Descuento" HeaderText="Descuento" />
-                    <asp:BoundField DataField="SubTotal" HeaderText="SubTotal" />
+                    <asp:BoundField DataField="Subtotal" HeaderText="SubTotal" />
                     <%--revisar que la garantia se muestre tambien en la grilla y a factura--%>
                     <%--y que el evetno de aumentar o disminuir funccione correctamente--%>
-                    <asp:TemplateField HeaderText="Garantía">
+                    <asp:TemplateField HeaderText="Garantia">
                         <ItemTemplate>
                             <%#Eval ("Garantia") %>
                         </ItemTemplate>
@@ -147,7 +147,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Disminuir">
                         <ItemTemplate>
-                            <asp:Button ID="btndisminuir" CommandName="restar" CssClass="btn btn-success" runat="server" Text="Disminuir" />
+                            <asp:Button ID="btndisminuir" CommandName="Disminuir" CssClass="btn btn-success" runat="server" Text="Disminuir" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -267,11 +267,6 @@
                 </div>
 
             </div>
-
-
-
-
-
 
 
         </asp:View>

@@ -12,12 +12,10 @@ namespace ClaseDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class tblCategoria
+    public partial class Table_1
     {
-        public int IDCategoria { get; set; }
-        public string NombCategoria { get; set; }
-        public string Descripcion { get; set; }
-        public string Imagen { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public int IDDetTmp { get; set; }
+        public Nullable<int> IDArticulo { get; set; }
+        public string Subtotal { get; set; }
     }
 }

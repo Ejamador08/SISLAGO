@@ -17,7 +17,7 @@ namespace ClaseDatos
         public tblArticulo()
         {
             this.tblDetFactura = new HashSet<tblDetFactura>();
-            this.tblDetFactTMP = new HashSet<tblDetFactTMP>();
+            this.tblDetFacturaTMP = new HashSet<tblDetFacturaTMP>();
         }
     
         public int IDArticulos { get; set; }
@@ -29,15 +29,13 @@ namespace ClaseDatos
         public float PrecioCompra { get; set; }
         public float PrecioVenta { get; set; }
         public float Impuestos { get; set; }
+        public Nullable<int> Existencia { get; set; }
         public string Imagen { get; set; }
         public int IDProveedor { get; set; }
         public int IDCategoria { get; set; }
         public Nullable<bool> Estado { get; set; }
-        public Nullable<int> Existencia { get; set; }
     
-        public virtual tblCategoria tblCategoria { get; set; }
-        public virtual tblProveedor tblProveedor { get; set; }
         public virtual ICollection<tblDetFactura> tblDetFactura { get; set; }
-        public virtual ICollection<tblDetFactTMP> tblDetFactTMP { get; set; }
+        public virtual ICollection<tblDetFacturaTMP> tblDetFacturaTMP { get; set; }
     }
 }

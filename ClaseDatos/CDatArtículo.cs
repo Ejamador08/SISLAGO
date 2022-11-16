@@ -10,7 +10,7 @@ namespace ClaseDatos
 {
     public class CDatArtículo
     {
-        BDLago_01Entities1 context = new BDLago_01Entities1();
+        BDLago_01Entities2 context = new BDLago_01Entities2();
 
         //List<CEntArtículo> articulo = new List<CEntArtículo>();
 
@@ -330,8 +330,6 @@ namespace ClaseDatos
         public List<CEntArtículo> MuestraArticuloFactura(int id)
         {
             var consulta=(from art in context.tblArticulo
-                          join p in context.tblProveedor on art.IDProveedor equals p.IDProveedor
-                          join c in context.tblCategoria on art.IDCategoria equals c.IDCategoria
                           orderby art.IDArticulos descending
                           where art.Estado == true
                           select new CEntArtículo
@@ -349,10 +347,7 @@ namespace ClaseDatos
                               Imagen = art.Imagen,
                               IDProveedor = art.IDProveedor,
                               IDCategoria = art.IDCategoria,
-                              Estado = art.Estado,
-
-                              NombreProveedor = p.NombNegocio,
-                              NombreCategoria = c.NombCategoria
+                              Estado = art.Estado
                           }).ToList();
             return consulta;
         }

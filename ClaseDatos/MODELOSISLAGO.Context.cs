@@ -16,10 +16,10 @@ namespace ClaseDatos
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class BDLago_01Entities1 : DbContext
+    public partial class BDLago_01Entities2 : DbContext
     {
-        public BDLago_01Entities1()
-            : base("name=BDLago_01Entities1")
+        public BDLago_01Entities2()
+            : base("name=BDLago_01Entities2")
         {
         }
     
@@ -29,14 +29,15 @@ namespace ClaseDatos
         }
     
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public DbSet<Table_1> Table_1 { get; set; }
         public DbSet<tblArticulo> tblArticulo { get; set; }
         public DbSet<tblCategoria> tblCategoria { get; set; }
         public DbSet<tblDetFactura> tblDetFactura { get; set; }
+        public DbSet<tblDetFacturaTMP> tblDetFacturaTMP { get; set; }
         public DbSet<tblEmpleado> tblEmpleado { get; set; }
         public DbSet<tblFactura> tblFactura { get; set; }
         public DbSet<tblProveedor> tblProveedor { get; set; }
         public DbSet<tblUsuario> tblUsuario { get; set; }
-        public DbSet<tblDetFactTMP> tblDetFactTMPSet { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
