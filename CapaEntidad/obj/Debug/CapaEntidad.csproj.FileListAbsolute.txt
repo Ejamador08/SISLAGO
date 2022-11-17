@@ -4,8 +4,3 @@ C:\Users\PROGRAMACION\Documents\SistemaISLAGO\CapaEntidad\bin\Debug\CapaEntidad.
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\CapaEntidad\obj\Debug\CapaEntidad.dll
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\CapaEntidad\obj\Debug\CapaEntidad.pdb
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
-C:\Users\PROGRAMACION\Documents\SISLAGO\CapaEntidad\bin\Debug\CapaEntidad.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\CapaEntidad\bin\Debug\CapaEntidad.pdb
-C:\Users\PROGRAMACION\Documents\SISLAGO\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
-C:\Users\PROGRAMACION\Documents\SISLAGO\CapaEntidad\obj\Debug\CapaEntidad.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\CapaEntidad\obj\Debug\CapaEntidad.pdb

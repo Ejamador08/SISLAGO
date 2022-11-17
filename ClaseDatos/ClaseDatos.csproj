@@ -53,67 +53,67 @@
     <Compile Include="CDatCategoria.cs" />
     <Compile Include="CDatFacturacion.cs" />
     <Compile Include="CDatProveedor.cs" />
-    <Compile Include="MODELOSISLAGO.Context.cs">
+    <Compile Include="LAGOSYSTEM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MODELOSISLAGO.Context.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MODELOSISLAGO.cs">
+    <Compile Include="LAGOSYSTEM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
-    <Compile Include="MODELOSISLAGO.Designer.cs">
+    <Compile Include="LAGOSYSTEM.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MODELOSISLAGO.edmx</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="Table_1.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblArticulo.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCategoria.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDetFactura.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDetFacturaTMP.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEmpleado.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFactura.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProveedor.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
     <Compile Include="tblUsuario.cs">
-      <DependentUpon>MODELOSISLAGO.tt</DependentUpon>
+      <DependentUpon>LAGOSYSTEM.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="MODELOSISLAGO.edmx">
+    <EntityDeploy Include="LAGOSYSTEM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MODELOSISLAGO.Designer.cs</LastGenOutput>
+      <LastGenOutput>LAGOSYSTEM.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MODELOSISLAGO.edmx.diagram">
-      <DependentUpon>MODELOSISLAGO.edmx</DependentUpon>
+    <None Include="LAGOSYSTEM.edmx.diagram">
+      <DependentUpon>LAGOSYSTEM.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -127,15 +127,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MODELOSISLAGO.Context.tt">
+    <Content Include="LAGOSYSTEM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MODELOSISLAGO.edmx</DependentUpon>
-      <LastGenOutput>MODELOSISLAGO.Context.cs</LastGenOutput>
+      <DependentUpon>LAGOSYSTEM.edmx</DependentUpon>
+      <LastGenOutput>LAGOSYSTEM.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MODELOSISLAGO.tt">
+    <Content Include="LAGOSYSTEM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MODELOSISLAGO.edmx</DependentUpon>
-      <LastGenOutput>MODELOSISLAGO.cs</LastGenOutput>
+      <DependentUpon>LAGOSYSTEM.edmx</DependentUpon>
+      <LastGenOutput>LAGOSYSTEM.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

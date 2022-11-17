@@ -53,7 +53,7 @@
     <Key>
       <PropertyRef Name="IDDetFactura" />
     </Key>
-    <Property Name="IDDetFactura" Type="Int32" Nullable="false" />
+    <Property Name="IDDetFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Cantidad" Type="Int32" Nullable="false" />
     <Property Name="SubTotal" Type="Single" Nullable="false" />
     <Property Name="Total" Type="Single" Nullable="false" />
@@ -108,7 +108,7 @@
     <Key>
       <PropertyRef Name="IDFactura" />
     </Key>
-    <Property Name="IDFactura" Type="Int32" Nullable="false" />
+    <Property Name="IDFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="NombCompCliente" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Total" Type="Single" Nullable="false" />

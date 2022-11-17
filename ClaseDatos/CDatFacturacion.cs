@@ -11,7 +11,7 @@ namespace ClaseDatos
 {
     public class CDatFacturacion
     {
-        BDLago_01Entities2 context = new BDLago_01Entities2();
+        BDLago_01Entities6 context = new BDLago_01Entities6();
 
         #region Última Factura
         public int UltimaFactura()
@@ -28,7 +28,6 @@ namespace ClaseDatos
         #endregion
 
         #region Actividades en tabla Temporal
-
 
         #region Muestra Grid Detalle Temporal Factura
         public List<CEntDetalleFacturaTMP> MuestraTemporal(string user)
@@ -52,8 +51,11 @@ namespace ClaseDatos
                                 PrecioVenta = dt.PrecioVenta,
                                 Descuento = dt.Descuento,
                                 Garantia = dt.Garantia,
-                                Username = dt.Username
+                                Username = dt.Username,
+
+                                NombreArticulo=a.NombreArticulos
                             }).ToList();
+
             foreach (var item in consulta)
             {
                 lista.Add(new CEntDetalleFacturaTMP
@@ -69,7 +71,8 @@ namespace ClaseDatos
                     PrecioVenta = item.PrecioVenta,
                     Descuento = item.Descuento,
                     Garantia = item.Garantia,
-                    Username = item.Username
+                    Username = item.Username,
+                    NombreArticulo=item.NombreArticulo
                 });
             }
             return lista;
@@ -137,7 +140,7 @@ namespace ClaseDatos
         {
             try
             {
-                tblDetFacturaTMP tmp = context.tblDetFacturaTMP.FirstOrDefault(x => x.IDArticulos == id);
+                tblDetFacturaTMP tmp = context.tblDetFacturaTMP.FirstOrDefault(x => x.IDDetFacturaTMP == id);
 
                 context.tblDetFacturaTMP.Remove(tmp);
 
@@ -167,7 +170,6 @@ namespace ClaseDatos
                         NombCompCliente = fact.NombCompCliente,
                         IDUsuario = fact.IDUsuario,
                         Total = fact.Total,
-
                         Anulada = fact.Anulada
                     };
                     context.tblFactura.Add(vta);
@@ -204,12 +206,26 @@ namespace ClaseDatos
                     scope.Complete();
                     return true;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e);
                     scope.Dispose();
                     return false;
                 }
             }
+        }
+        #endregion
+
+        #region Muestra usuario que realizó la venta
+        public CEntUsuarios MuestraUsuarioID(string user)
+        {
+            var consulta = (from u in context.tblUsuario
+                            where u.UserName.Contains(user)
+                            select new CEntUsuarios
+                            {
+                                IDUsuario = u.IDUsuario
+                            }).FirstOrDefault();
+            return consulta;
         }
         #endregion
     }

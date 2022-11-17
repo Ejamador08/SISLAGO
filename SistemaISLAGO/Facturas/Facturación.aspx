@@ -67,7 +67,7 @@
                     <div class="col-md-2">
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <asp:TextBox ID="txtCantidad" Width="50%" CssClass="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCantidad" TextMode="Number" Width="50%" CssClass="form-control" runat="server"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="txtCantidad" ValidationExpression="[(0-9) | -]*" Display="Dynamic" CssClass="Validation" runat="server" ErrorMessage="* Solo Números se permiten" ValidationGroup="Guardar"></asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Display="Dynamic" CssClass="Validation" ErrorMessage="* Cantidad Requerida" ValidationGroup="Guardar" ControlToValidate="txtCantidad"></asp:RequiredFieldValidator>
                         </div>
@@ -117,23 +117,23 @@
                 <center>
                     <h1><i class="glyphicon glyphicon-list">Detalle de la Factura</i></h1>
                 </center>
-                <asp:GridView ID="GridViewDetalle" CssClass="table table-bordered" AutoGenerateColumns="False" 
+                <asp:GridView ID="GridViewDetalle" CssClass="table table-bordered" AutoGenerateColumns="False" Visible="true" 
                 OnRowCommand="GridViewDetalle_RowCommand" DataKeyNames="IDDetFacturaTMP" OnRowDataBound="GridViewDetalle_RowDataBound"
                 runat="server">
                 <HeaderStyle BackColor="#6c9ed7" HorizontalAlign="Center" />
                 <Columns>
-                   <%-- <asp:BoundField DataField="Nombre_Articulo" HeaderText="Nombre" />--%>
+                    <asp:BoundField DataField="NombreArticulo" HeaderText="Nombre" />
                     <asp:BoundField DataField="PrecioVenta" HeaderText="Precio" />
                     <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
                     <asp:BoundField DataField="Descuento" HeaderText="Descuento" />
                     <asp:BoundField DataField="Subtotal" HeaderText="SubTotal" />
                     <%--revisar que la garantia se muestre tambien en la grilla y a factura--%>
                     <%--y que el evetno de aumentar o disminuir funccione correctamente--%>
-                    <asp:TemplateField HeaderText="Garantia">
+                    <%--  %><asp:TemplateField HeaderText="Garantia">
                         <ItemTemplate>
                             <%#Eval ("Garantia") %>
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
                     <asp:TemplateField HeaderText="Eliminar">
                         <ItemTemplate>
                             <asp:Button class="btn btn-danger" ID="btnEliminar" CommandName="Eliminar" runat="server" Text="Quitar" />

@@ -17,11 +17,11 @@ namespace CapaEntidad
         public float PrecioCompra { get; set; }
         public float PrecioVenta { get; set; }
         public float Impuestos { get; set; }
+        public Nullable<int> Existencia { get; set; }
         public string Imagen { get; set; }
         public int IDProveedor { get; set; }
         public int IDCategoria { get; set; }
         public Nullable<bool> Estado { get; set; }
-        public Nullable<int> Existencia { get; set; }
 
         public string NombreProveedor { get; set; }
         public string NombreCategoria { get; set; }

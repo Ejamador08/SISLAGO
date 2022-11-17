@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using System.Transactions;
+
 using CapaEntidad;
 using ClaseNegocio;
 
@@ -66,7 +68,7 @@ namespace SistemaISLAGO.Facturas
             }
             else
             {
-                ent.IDFactura = int.Parse(HiddenFieldArticulo.Value);
+                ent.IDArticulos = int.Parse(HiddenFieldArticulo.Value);
                 ent.PrecioVenta = Convert.ToSingle(txtprecio.Text);
                 ent.Cantidad = int.Parse(txtCantidad.Text);
                 ent.Garantia = txtgarantia.Text;
@@ -102,9 +104,9 @@ namespace SistemaISLAGO.Facturas
             var neg = new CNegFactura();
 
             var art = neg.MuestraTemporal(user);
-
-            txttotalventa.Text = art.Sum(sub => sub.Subtotal).ToString();
+                        
             txtdescapli.Text= string.Format("C$: {0:0.00}", art.Sum(sa => sa.Descuento)).ToString();
+            txttotalventa.Text = art.Sum(sub => sub.Subtotal).ToString();
 
             foreach (var item in art)
             {
@@ -245,9 +247,56 @@ namespace SistemaISLAGO.Facturas
 
         }
 
+        #region Realizar Facturación de Articulos
+        public bool FacturarArticulos()
+        {
+            try
+            {
+                var ent = new CEntFactura();
+
+                var neg = new CNegFactura();
+
+                string username = "elias08";
+
+                var user = neg.MuestraUsuarioID(username);
+
+                ent.Fecha = DateTime.Now;
+                ent.NombCompCliente = txtcliente.Text.Trim();
+                ent.Anulada = Convert.ToString(false);
+                ent.IDUsuario = user.IDUsuario;
+                ent.Total = Convert.ToSingle(txttotalventa.Text);
+
+                neg.FacturarTransaccion(ent, username);
+
+                GridTemporal(username);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        #endregion
+
         protected void btnRealizarfactura_Click(object sender, EventArgs e)
         {
-
+            FacturarArticulos();
+            /*txtcliente.Text = "";
+            txtarticulo.Text = "";
+            HiddenFieldArticulo.Value = null;
+            txtprecio.Text = "";
+            txtExistencia.Text = "";
+            txttotalventa.Text = "";
+            txtgarantia.Text = "";
+            txtCambioDolar.Text = "";
+            txtdescapli.Text = "";
+            txtdolarrecibido.Text = "";
+            txtcordobasrecibido.Text = "";
+            txtrecibidototal.Text = "";
+            txtVuelto.Text = "";
+            lblAlert.Text = "";
+            lblconversion.Text = "";*/
         }
 
         protected void CBDolar_CheckedChanged(object sender, EventArgs e)

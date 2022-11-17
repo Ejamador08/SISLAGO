@@ -117,5 +117,3 @@ C:\Users\PROGRAMACION\Documents\SistemaISLAGO\SistemaISLAGO\bin\CapaEntidad.pdb
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\SistemaISLAGO\bin\ClaseDatos.pdb
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\SistemaISLAGO\bin\ClaseDatos.dll.config
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\SistemaISLAGO\bin\EntityFramework.xml
-C:\Users\PROGRAMACION\Documents\SISLAGO\SistemaISLAGO\obj\Debug\SistemaISLAGO.csproj.AssemblyReference.cache
-C:\Users\PROGRAMACION\Documents\SISLAGO\SistemaISLAGO\obj\Debug\SistemaISLAGO.csproj.CoreCompileInputs.cache

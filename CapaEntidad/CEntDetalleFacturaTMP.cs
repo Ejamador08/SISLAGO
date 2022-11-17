@@ -20,5 +20,7 @@ namespace CapaEntidad
         public Nullable<float> Descuento { get; set; }
         public string Garantia { get; set; }
         public string Username { get; set; }
+
+        public string NombreArticulo { get; set; }
     }
 }

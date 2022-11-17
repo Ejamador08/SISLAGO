@@ -51,7 +51,7 @@
     <Key>
       <PropertyRef Name="IDDetFactura" />
     </Key>
-    <Property Name="IDDetFactura" Type="int" Nullable="false" />
+    <Property Name="IDDetFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Cantidad" Type="int" Nullable="false" />
     <Property Name="SubTotal" Type="real" Nullable="false" />
     <Property Name="Total" Type="real" Nullable="false" />
@@ -101,7 +101,7 @@
     <Key>
       <PropertyRef Name="IDFactura" />
     </Key>
-    <Property Name="IDFactura" Type="int" Nullable="false" />
+    <Property Name="IDFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
     <Property Name="NombCompCliente" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Total" Type="real" Nullable="false" />
