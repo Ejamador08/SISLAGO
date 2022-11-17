@@ -260,7 +260,7 @@ namespace SistemaISLAGO.Facturas
 
                 var user = neg.MuestraUsuarioID(username);
 
-                ent.Fecha = DateTime.Now;
+                ent.Fecha = Convert.ToDateTime(DateTime.Now);
                 ent.NombCompCliente = txtcliente.Text.Trim();
                 ent.Anulada = Convert.ToString(false);
                 ent.IDUsuario = user.IDUsuario;
@@ -274,6 +274,7 @@ namespace SistemaISLAGO.Facturas
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 return false;
             }
         }
