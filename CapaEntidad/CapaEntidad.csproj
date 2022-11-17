@@ -46,6 +46,7 @@
     <Compile Include="CEntDetalleFacturaTMP.cs" />
     <Compile Include="CEntFactura.cs" />
     <Compile Include="CEntProveedor.cs" />
+    <Compile Include="CEntUsuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

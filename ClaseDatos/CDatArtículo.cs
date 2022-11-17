@@ -10,7 +10,7 @@ namespace ClaseDatos
 {
     public class CDatArtículo
     {
-        BDLago_01Entities2 context = new BDLago_01Entities2();
+        BDLago_01Entities6 context = new BDLago_01Entities6();
 
         #region C >> Create >> Insertar
         public bool GuardaNuevoArticulo(CEntArtículo nuevo)

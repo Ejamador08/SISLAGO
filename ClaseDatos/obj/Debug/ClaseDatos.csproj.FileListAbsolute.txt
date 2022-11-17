@@ -22,15 +22,3 @@ C:\Users\PROGRAMACION\Documents\SistemaISLAGO\ClaseDatos\obj\Debug\ClaseDatos.dl
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\ClaseDatos\obj\Debug\ClaseDatos.pdb
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\ClaseDatos\bin\Debug\CapaEntidad.dll
 C:\Users\PROGRAMACION\Documents\SistemaISLAGO\ClaseDatos\bin\Debug\CapaEntidad.pdb
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\ClaseDatos.dll.config
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\ClaseDatos.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\ClaseDatos.pdb
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\CapaEntidad.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\EntityFramework.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\CapaEntidad.pdb
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\bin\Debug\EntityFramework.xml
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\obj\Debug\ClaseDatos.csproj.AssemblyReference.cache
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\obj\Debug\ClaseDatos.csproj.CoreCompileInputs.cache
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\obj\Debug\ClaseDatos.csproj.CopyComplete
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\obj\Debug\ClaseDatos.dll
-C:\Users\PROGRAMACION\Documents\SISLAGO\ClaseDatos\obj\Debug\ClaseDatos.pdb

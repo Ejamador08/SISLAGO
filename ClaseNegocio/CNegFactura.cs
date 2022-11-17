@@ -51,5 +51,21 @@ namespace ClaseNegocio
             return f.Cantidad(cant, id);
         }
         #endregion
+
+        #region Realizar Factura Fisica
+        public bool FacturarTransaccion(CEntFactura fact, string user)
+        {
+            CDatFacturacion f = new CDatFacturacion();
+            return f.FacturarTransaccion(fact, user);
+        }
+        #endregion
+
+        #region Muestra usuario que realizó la venta
+        public CEntUsuarios MuestraUsuarioID(string user)
+        {
+            CDatFacturacion f = new CDatFacturacion();
+            return f.MuestraUsuarioID(user);
+        }
+        #endregion
     }
 }
