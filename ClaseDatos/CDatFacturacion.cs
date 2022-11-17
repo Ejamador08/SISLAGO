@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Transactions;
 
 using CapaEntidad;
@@ -164,7 +165,7 @@ namespace ClaseDatos
             {
                 try
                 {
-                    tblFactura vta = new tblFactura()
+                   var vta = new tblFactura
                     {
                         Fecha = fact.Fecha,
                         NombCompCliente = fact.NombCompCliente,
